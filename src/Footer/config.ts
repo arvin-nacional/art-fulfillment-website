@@ -10,6 +10,12 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'tagline',
+      type: 'textarea',
+      defaultValue:
+        'Next-generation fulfillment solutions for modern brands across Philippines and ASEAN.',
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [
@@ -24,6 +30,26 @@ export const Footer: GlobalConfig = {
           RowLabel: '@/Footer/RowLabel#RowLabel',
         },
       },
+    },
+    {
+      name: 'phone',
+      type: 'text',
+      defaultValue: '09123456789',
+    },
+    {
+      name: 'address',
+      type: 'textarea',
+      defaultValue: 'General Trias, Cavite — 1,000 sqm facility launching our operations',
+    },
+    {
+      name: 'email',
+      type: 'text',
+      defaultValue: 'info@artfsi.com',
+    },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      defaultValue: '© 2025 ART Fulfillment Solutions, Inc. All rights reserved.',
     },
   ],
   hooks: {

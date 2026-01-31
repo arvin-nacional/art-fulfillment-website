@@ -14,6 +14,8 @@ import { MissionSectionBlock } from '@/blocks/MissionSection/Component'
 import { ValuesSectionBlock } from '@/blocks/ValuesSection/Component'
 import { NumberedFeaturesBlock } from '@/blocks/NumberedFeatures/Component'
 import { ContactSectionBlock } from '@/blocks/ContactSection/Component'
+import { ServiceCardsBlock } from '@/blocks/ServiceCards/Component'
+import { HeroBlockComponent } from '@/blocks/HeroBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -28,6 +30,8 @@ const blockComponents = {
   valuesSection: ValuesSectionBlock,
   numberedFeatures: NumberedFeaturesBlock,
   contactSection: ContactSectionBlock,
+  serviceCards: ServiceCardsBlock,
+  heroBlock: HeroBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

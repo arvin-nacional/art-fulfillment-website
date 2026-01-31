@@ -14,6 +14,8 @@ import { MissionSection } from '../../blocks/MissionSection/config'
 import { ValuesSection } from '../../blocks/ValuesSection/config'
 import { NumberedFeatures } from '../../blocks/NumberedFeatures/config'
 import { ContactSection } from '../../blocks/ContactSection/config'
+import { ServiceCards } from '../../blocks/ServiceCards/config'
+import { HeroBlock } from '../../blocks/HeroBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -92,6 +94,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 ValuesSection,
                 NumberedFeatures,
                 ContactSection,
+                ServiceCards,
+                HeroBlock,
               ],
               required: true,
               admin: {

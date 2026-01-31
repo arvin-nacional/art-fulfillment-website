@@ -12,7 +12,7 @@ export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({ heading, descr
       }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        {heading && <h1 className="text-4xl md:text-5xl font-bold">{heading}</h1>}
+        {heading && <h1 className="text-4xl md:text-5xl font-bold text-primary">{heading}</h1>}
         {description && (
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{description}</p>
         )}

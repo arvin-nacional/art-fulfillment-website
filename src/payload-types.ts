@@ -213,6 +213,8 @@ export interface Page {
     | ValuesSectionBlock
     | NumberedFeaturesBlock
     | ContactSectionBlock
+    | ServiceCardsBlock
+    | HeroBlock
   )[];
   meta?: {
     title?: string | null;
@@ -974,6 +976,84 @@ export interface ContactSectionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCardsBlock".
+ */
+export interface ServiceCardsBlock {
+  heading: string;
+  cards: {
+    icon:
+      | 'box'
+      | 'zap'
+      | 'truck'
+      | 'globe'
+      | 'bar-chart'
+      | 'shield'
+      | 'package'
+      | 'clipboard'
+      | 'settings'
+      | 'users'
+      | 'database'
+      | 'target';
+    iconColor: 'primary' | 'accent';
+    title: string;
+    description?: string | null;
+    bulletPoints?:
+      | {
+          color: 'primary' | 'accent';
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'serviceCards';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  heading: string;
+  description?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'heroBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1287,6 +1367,8 @@ export interface PagesSelect<T extends boolean = true> {
         valuesSection?: T | ValuesSectionBlockSelect<T>;
         numberedFeatures?: T | NumberedFeaturesBlockSelect<T>;
         contactSection?: T | ContactSectionBlockSelect<T>;
+        serviceCards?: T | ServiceCardsBlockSelect<T>;
+        heroBlock?: T | HeroBlockSelect<T>;
       };
   meta?:
     | T
@@ -1541,6 +1623,63 @@ export interface ContactSectionBlockSelect<T extends boolean = true> {
   formDescription?: T;
   form?: T;
   privacyText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceCardsBlock_select".
+ */
+export interface ServiceCardsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  cards?:
+    | T
+    | {
+        icon?: T;
+        iconColor?: T;
+        title?: T;
+        description?: T;
+        bulletPoints?:
+          | T
+          | {
+              color?: T;
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2022,6 +2161,7 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  tagline?: string | null;
   navItems?:
     | {
         link: {
@@ -2042,6 +2182,10 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  phone?: string | null;
+  address?: string | null;
+  email?: string | null;
+  copyrightText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2073,6 +2217,7 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  tagline?: T;
   navItems?:
     | T
     | {
@@ -2087,6 +2232,10 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  phone?: T;
+  address?: T;
+  email?: T;
+  copyrightText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
