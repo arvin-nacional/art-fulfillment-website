@@ -31,7 +31,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
                       className={
                         isPrimary
                           ? 'bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto'
-                          : 'border-2 border-primary text-primary hover:bg-primary/10 w-full sm:w-auto bg-transparent'
+                          : 'border-2 border-primary text-primary hover:bg-primary/10 w-full sm:w-auto bg-transparent hover:text-primary'
                       }
                     />
                   )
