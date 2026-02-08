@@ -1,15 +1,22 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Menu, X } from 'lucide-react'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <>
@@ -27,33 +34,37 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         })}
       </nav>
 
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden p-2 text-white"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-      >
-        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
-
-      {/* Mobile Navigation Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[72px] z-50 bg-background md:hidden">
-          <nav className="flex flex-col p-6 gap-4">
+      {/* Mobile Navigation Drawer */}
+      <Drawer direction="right">
+        <DrawerTrigger asChild className="md:hidden">
+          <button className="p-2 text-white" aria-label="Open menu">
+            <Menu className="w-6 h-6" />
+          </button>
+        </DrawerTrigger>
+        <DrawerContent className="h-full w-[280px] fixed right-0 top-0 bottom-0 left-auto rounded-none border-l">
+          <DrawerHeader className="flex items-center justify-end pb-4">
+            <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
+            <DrawerClose asChild>
+              <button className="p-2" aria-label="Close menu">
+                <X className="w-5 h-5" />
+              </button>
+            </DrawerClose>
+          </DrawerHeader>
+          <nav className="flex flex-col p-4 gap-2">
             {navItems.map(({ link }, i) => {
               return (
-                <CMSLink
-                  key={i}
-                  {...link}
-                  appearance="link"
-                  className="text-lg py-2 border-b border-border"
-                  onClick={() => setMobileMenuOpen(false)}
-                />
+                <DrawerClose asChild key={i}>
+                  <CMSLink
+                    {...link}
+                    appearance="link"
+                    className="text-lg py-3 px-2 hover:bg-muted rounded-md transition-colors"
+                  />
+                </DrawerClose>
               )
             })}
           </nav>
-        </div>
-      )}
+        </DrawerContent>
+      </Drawer>
     </>
   )
 }
