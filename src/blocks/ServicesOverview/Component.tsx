@@ -14,7 +14,7 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
   ctaLink,
 }) => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-[#a8c6c3]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(heading || subheading) && (
           <div className="text-center mb-12">
@@ -35,7 +35,7 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
             return (
               <div
                 key={index}
-                className="bg-card border border-border rounded-xl p-8 flex items-start gap-4"
+                className="bg-white border border-border rounded-xl p-8 flex items-start gap-4 transition-all duration-300 hover:scale-101 hover:shadow-lg hover:shadow-black/20"
               >
                 <div className="shrink-0">
                   <CheckCircle className={`${iconColorClass} h-6 w-6 mt-1`} />
@@ -53,7 +53,7 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
           <div className="mt-12 text-center">
             <CMSLink
               {...ctaLink}
-              className="bg-white text-[#0a2e2a] hover:bg-gray-100 font-medium px-8 outline-1 outline-[#0a2e2a]"
+              className="bg-white text-[#0a2e2a] hover:bg-primary hover:text-white font-medium px-8 outline-1 outline-[#0a2e2a] transition-all duration-300"
             />
           </div>
         )}

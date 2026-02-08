@@ -14,15 +14,22 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex gap-3 items-center">
+      <nav className="hidden md:flex gap-3 items-center text-white">
         {navItems.map(({ link }, i) => {
-          return <CMSLink key={i} {...link} appearance="link" />
+          return (
+            <CMSLink
+              key={i}
+              {...link}
+              appearance="link"
+              className="text-white hover:text-white/80"
+            />
+          )
         })}
       </nav>
 
       {/* Mobile Menu Button */}
       <button
-        className="md:hidden p-2 text-foreground"
+        className="md:hidden p-2 text-white"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
       >

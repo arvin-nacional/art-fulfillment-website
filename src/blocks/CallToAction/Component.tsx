@@ -8,11 +8,11 @@ import { Button } from '@/components/ui/button'
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
   return (
-    <section className="bg-[#0a2e2a] py-16 md:py-24">
+    <section className="bg-gradient-to-br from-primary to-secondary py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {richText && (
           <RichText
-            className="mb-8 prose-headings:text-white prose-headings:font-bold prose-p:text-gray-300 prose-strong:text-accent"
+            className="mb-8 prose-headings:text-white prose-headings:font-bold prose-headings:text-3xl prose-p:text-gray-300 prose-strong:text-accent "
             data={richText}
             enableGutter={false}
           />

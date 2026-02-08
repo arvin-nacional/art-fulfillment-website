@@ -16,6 +16,7 @@ import { NumberedFeatures } from '../../blocks/NumberedFeatures/config'
 import { ContactSection } from '../../blocks/ContactSection/config'
 import { ServiceCards } from '../../blocks/ServiceCards/config'
 import { HeroBlock } from '../../blocks/HeroBlock/config'
+import { GoogleMapBlock } from '../../blocks/GoogleMapBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -96,6 +97,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ContactSection,
                 ServiceCards,
                 HeroBlock,
+                GoogleMapBlock,
               ],
               required: true,
               admin: {

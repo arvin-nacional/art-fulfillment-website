@@ -215,6 +215,7 @@ export interface Page {
     | ContactSectionBlock
     | ServiceCardsBlock
     | HeroBlock
+    | GoogleMapBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1054,6 +1055,24 @@ export interface HeroBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GoogleMapBlock".
+ */
+export interface GoogleMapBlock {
+  /**
+   * Go to Google Maps → Share → Embed a map → Copy the src URL from the iframe code
+   */
+  embedUrl: string;
+  /**
+   * Height of the map in pixels
+   */
+  height?: number | null;
+  fullWidth?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'googleMapBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1369,6 +1388,7 @@ export interface PagesSelect<T extends boolean = true> {
         contactSection?: T | ContactSectionBlockSelect<T>;
         serviceCards?: T | ServiceCardsBlockSelect<T>;
         heroBlock?: T | HeroBlockSelect<T>;
+        googleMapBlock?: T | GoogleMapBlockSelect<T>;
       };
   meta?:
     | T
@@ -1680,6 +1700,17 @@ export interface HeroBlockSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GoogleMapBlock_select".
+ */
+export interface GoogleMapBlockSelect<T extends boolean = true> {
+  embedUrl?: T;
+  height?: T;
+  fullWidth?: T;
   id?: T;
   blockName?: T;
 }

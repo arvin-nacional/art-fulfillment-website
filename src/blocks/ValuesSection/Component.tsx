@@ -29,7 +29,7 @@ const iconMap = {
 
 export const ValuesSectionBlock: React.FC<ValuesSectionBlockProps> = ({ heading, values }) => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-16 md:py-24 bg-[#a8c6c3]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {heading && <h2 className="text-3xl font-bold mb-12 text-center">{heading}</h2>}
 

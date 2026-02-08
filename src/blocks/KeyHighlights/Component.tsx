@@ -33,37 +33,34 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
   highlights,
 }) => {
   return (
-    <section className="py-16 md:py-24 bg-card">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(heading || subheading) && (
           <div className="text-center mb-12">
-            {heading && <h2 className="text-3xl md:text-4xl font-bold mb-4">{heading}</h2>}
-            {subheading && <p className="text-lg text-muted-foreground">{subheading}</p>}
+            {heading && (
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">{heading}</h2>
+            )}
+            {subheading && <p className="text-lg text-white">{subheading}</p>}
           </div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {highlights?.map((highlight, index) => {
             const Icon = iconMap[highlight.icon as keyof typeof iconMap] || Zap
-            const colorClass =
-              highlight.iconColor === 'accent'
-                ? 'bg-accent/10 text-accent'
-                : highlight.iconColor === 'secondary'
-                  ? 'bg-secondary/10 text-secondary'
-                  : 'bg-primary/10 text-primary'
+            const colorClass = 'bg-secondary text-white'
 
             return (
               <div
                 key={index}
-                className="bg-background border border-border rounded-xl p-6 space-y-4"
+                className="border border-border rounded-xl p-6 space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20"
               >
                 <div
                   className={`w-12 h-12 ${colorClass.split(' ')[0]} rounded-lg flex items-center justify-center`}
                 >
                   <Icon className={`${colorClass.split(' ')[1]} h-6 w-6`} />
                 </div>
-                <h3 className="text-xl font-semibold">{highlight.title}</h3>
-                <p className="text-muted-foreground">{highlight.description}</p>
+                <h3 className="text-xl font-semibold text-white">{highlight.title}</h3>
+                <p className="text-white">{highlight.description}</p>
               </div>
             )
           })}
