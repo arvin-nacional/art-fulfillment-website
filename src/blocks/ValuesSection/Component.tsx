@@ -42,7 +42,7 @@ export const ValuesSectionBlock: React.FC<ValuesSectionBlockProps> = ({ heading,
             return (
               <div
                 key={index}
-                className="bg-background border border-border rounded-xl p-8 space-y-4"
+                className="bg-background border border-border rounded-xl p-8 space-y-4 hover:shadow-lg transition-shadow"
               >
                 <div
                   className={`w-12 h-12 ${bgColorClass} rounded-lg flex items-center justify-center`}
