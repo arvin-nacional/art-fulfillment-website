@@ -11,7 +11,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   stats,
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#a8c6c3]/20 py-20 md:py-32">
+    <section className="relative overflow-hidden bg-[#a8c6c3]/20 py-20 md:py-32 2xl:h-[80vh] flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
