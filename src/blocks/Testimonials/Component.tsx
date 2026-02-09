@@ -67,7 +67,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                       ))}
                     </div>
                     <p className="text-foreground font-medium text-sm leading-relaxed line-clamp-3">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </div>
                   <div className="flex items-center gap-3 pt-4">
@@ -99,7 +99,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                       ))}
                     </div>
                     <p className="text-foreground font-medium text-sm leading-relaxed line-clamp-3">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </div>
                   <div className="flex items-center gap-3 pt-4">
@@ -138,7 +138,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                       ))}
                     </div>
                     <p className="text-foreground font-medium text-sm leading-relaxed line-clamp-3">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </div>
                   <div className="flex items-center gap-3 pt-4">
@@ -170,7 +170,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                       ))}
                     </div>
                     <p className="text-foreground font-medium text-sm leading-relaxed line-clamp-3">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </div>
                   <div className="flex items-center gap-3 pt-4">
