@@ -1,6 +1,7 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import sharp from 'sharp'
 import path from 'path'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
@@ -65,6 +66,11 @@ export default buildConfig({
   globals: [Header, Footer],
   plugins,
   secret: process.env.PAYLOAD_SECRET,
+  email: resendAdapter({
+    apiKey: process.env.RESEND_API_KEY || '',
+    defaultFromAddress: 'artfsi@rvinpaul.com',
+    defaultFromName: 'ART Fulfillment Solutions Inc.',
+  }),
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
