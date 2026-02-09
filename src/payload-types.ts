@@ -216,6 +216,7 @@ export interface Page {
     | ServiceCardsBlock
     | HeroBlock
     | GoogleMapBlock
+    | TestimonialsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1073,6 +1074,35 @@ export interface GoogleMapBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  heading: string;
+  subheading?: string | null;
+  testimonials: {
+    quote: string;
+    author: string;
+    role: string;
+    initials: string;
+    bgColor:
+      | 'bg-blue-100'
+      | 'bg-purple-100'
+      | 'bg-pink-100'
+      | 'bg-green-100'
+      | 'bg-yellow-100'
+      | 'bg-indigo-100'
+      | 'bg-teal-100'
+      | 'bg-orange-100'
+      | 'bg-red-100'
+      | 'bg-cyan-100';
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1389,6 +1419,7 @@ export interface PagesSelect<T extends boolean = true> {
         serviceCards?: T | ServiceCardsBlockSelect<T>;
         heroBlock?: T | HeroBlockSelect<T>;
         googleMapBlock?: T | GoogleMapBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1711,6 +1742,26 @@ export interface GoogleMapBlockSelect<T extends boolean = true> {
   embedUrl?: T;
   height?: T;
   fullWidth?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        role?: T;
+        initials?: T;
+        bgColor?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

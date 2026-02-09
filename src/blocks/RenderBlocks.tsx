@@ -17,6 +17,7 @@ import { ContactSectionBlock } from '@/blocks/ContactSection/Component'
 import { ServiceCardsBlock } from '@/blocks/ServiceCards/Component'
 import { HeroBlockComponent } from '@/blocks/HeroBlock/Component'
 import { GoogleMapBlockComponent } from '@/blocks/GoogleMapBlock/Component'
+import { TestimonialsBlock } from '@/blocks/Testimonials/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -34,6 +35,7 @@ const blockComponents = {
   serviceCards: ServiceCardsBlock,
   heroBlock: HeroBlockComponent,
   googleMapBlock: GoogleMapBlockComponent,
+  testimonials: TestimonialsBlock,
 }
 
 export const RenderBlocks: React.FC<{
