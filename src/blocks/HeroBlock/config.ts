@@ -27,7 +27,7 @@ export const HeroBlock: Block = {
       name: 'stats',
       type: 'array',
       label: 'Stats',
-      maxRows: 2,
+      maxRows: 4,
       fields: [
         {
           name: 'value',

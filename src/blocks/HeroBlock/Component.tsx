@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useRef, useState } from 'react'
 
 import type { HeroBlock as HeroBlockProps } from '@/payload-types'
 
@@ -10,17 +12,56 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   links,
   stats,
 }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="relative overflow-hidden bg-[#a8c6c3]/20 py-20 md:py-32 2xl:h-[80vh] flex items-center">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[#a8c6c3]/20 py-20 md:py-32 2xl:h-[80vh] flex items-center"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-balance leading-tight text-primary">
+            <h1
+              className={`text-4xl md:text-5xl font-bold text-balance leading-tight text-primary transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               {heading}
             </h1>
-            {description && <p className="text-lg text-muted-foreground max-w-xl">{description}</p>}
+            {description && (
+              <p
+                className={`text-lg text-muted-foreground max-w-xl transition-all duration-700 delay-150 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
+                {description}
+              </p>
+            )}
             {Array.isArray(links) && links.length > 0 && (
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div
+                className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
                 {links.map(({ link }, i) => {
                   const isPrimary = i === 0
                   return (
@@ -40,26 +81,22 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
             )}
           </div>
 
-          <div className="hidden md:flex justify-center items-center">
+          <div
+            className={`hidden md:flex justify-center items-center transition-all duration-700 delay-500 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            }`}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
-              <div className="relative bg-card border border-border rounded-2xl p-8 space-y-4">
-                <div className="space-y-2">
-                  <div className="h-3 bg-primary/20 rounded w-3/4"></div>
-                  <div className="h-3 bg-primary/20 rounded w-1/2"></div>
-                </div>
+              <div className="relative bg-card border border-border rounded-2xl p-8">
                 {Array.isArray(stats) && stats.length > 0 && (
-                  <div className="grid grid-cols-2 gap-4 mt-6">
+                  <div className="grid grid-cols-2 gap-4">
                     {stats.map((stat, i) => (
                       <div
                         key={i}
                         className="bg-gradient-to-br from-background to-muted rounded-lg p-4 text-center"
                       >
-                        <p
-                          className={`text-2xl font-bold ${i === 0 ? 'text-primary' : 'text-accent'}`}
-                        >
-                          {stat.value}
-                        </p>
+                        <p className="text-2xl font-bold text-secondary">{stat.value}</p>
                         <p className="text-xs text-muted-foreground">{stat.label}</p>
                       </div>
                     ))}
