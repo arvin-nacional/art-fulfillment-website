@@ -217,6 +217,7 @@ export interface Page {
     | HeroBlock
     | GoogleMapBlock
     | TestimonialsBlock
+    | ServicePillarsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1103,6 +1104,35 @@ export interface TestimonialsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicePillarsBlock".
+ */
+export interface ServicePillarsBlock {
+  heading: string;
+  subheading?: string | null;
+  pillars?:
+    | {
+        title: string;
+        acronym?: string | null;
+        description?: string | null;
+        features?:
+          | {
+              /**
+               * Use **text** to bold important words (e.g., "Store products **safely** in our facility")
+               */
+              feature: string;
+              id?: string | null;
+            }[]
+          | null;
+        icon?: ('warehouse' | 'truck' | 'settings' | 'chart' | 'package' | 'shield') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicePillars';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1420,6 +1450,7 @@ export interface PagesSelect<T extends boolean = true> {
         heroBlock?: T | HeroBlockSelect<T>;
         googleMapBlock?: T | GoogleMapBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
+        servicePillars?: T | ServicePillarsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1760,6 +1791,31 @@ export interface TestimonialsBlockSelect<T extends boolean = true> {
         role?: T;
         initials?: T;
         bgColor?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicePillarsBlock_select".
+ */
+export interface ServicePillarsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  pillars?:
+    | T
+    | {
+        title?: T;
+        acronym?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              feature?: T;
+              id?: T;
+            };
+        icon?: T;
         id?: T;
       };
   id?: T;
