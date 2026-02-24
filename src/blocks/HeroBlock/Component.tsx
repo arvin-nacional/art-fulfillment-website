@@ -94,7 +94,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
                     {stats.map((stat, i) => (
                       <div
                         key={i}
-                        className="bg-gradient-to-br from-background to-muted rounded-lg p-4 text-center"
+                        className="bg-gradient-to-br from-background to-muted rounded-lg p-4 text-center flex flex-col items-center justify-center"
                       >
                         <p className="text-2xl font-bold text-secondary">{stat.value}</p>
                         <p className="text-xs text-muted-foreground">{stat.label}</p>
