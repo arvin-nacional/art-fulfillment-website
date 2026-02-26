@@ -460,6 +460,14 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  /**
+   * Optional background video (MP4 recommended). Falls back to gradient if not set.
+   */
+  backgroundVideo?: (string | null) | Media;
+  /**
+   * Dark overlay opacity (0–100%). Helps text readability over video.
+   */
+  overlayOpacity?: number | null;
   richText?: {
     root: {
       type: string;
@@ -1471,6 +1479,8 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  backgroundVideo?: T;
+  overlayOpacity?: T;
   richText?: T;
   links?:
     | T

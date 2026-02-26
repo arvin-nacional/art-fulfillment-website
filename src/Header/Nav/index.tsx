@@ -14,6 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
+import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
@@ -32,6 +33,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             />
           )
         })}
+        {/* <ThemeSelector /> */}
       </nav>
 
       {/* Mobile Navigation Drawer */}

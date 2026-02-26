@@ -14,7 +14,7 @@ export async function Footer() {
   const { tagline, phone, address, email, copyrightText } = footerData || {}
 
   return (
-    <footer className="mt-auto bg-primary text-white">
+    <footer className="mt-auto bg-[#132d26] text-white">
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Logo and Tagline */}
