@@ -6,6 +6,7 @@ import type { Footer } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
@@ -53,6 +54,7 @@ export async function Footer() {
                 </a>
               )}
             </div>
+            <ThemeSelector />
           </div>
         </div>
 

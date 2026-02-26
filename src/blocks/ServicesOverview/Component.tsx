@@ -86,7 +86,7 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="card-animate bg-white border border-border rounded-xl p-8 flex items-start gap-4 transition-all duration-300 hover:scale-101 hover:shadow-lg hover:shadow-black/20"
+                className="card-animate bg-card border border-border rounded-xl p-8 flex items-start gap-4 transition-all duration-300 hover:scale-101 hover:shadow-lg hover:shadow-black/20"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="shrink-0">
@@ -105,7 +105,7 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
           <div className="mt-12 text-center">
             <CMSLink
               {...ctaLink}
-              className="bg-white text-[#0a2e2a] hover:bg-primary hover:text-white font-medium px-8 outline-1 outline-[#0a2e2a] transition-all duration-300"
+              className="bg-card text-primary hover:bg-primary hover:text-primary-foreground font-medium px-8 border border-primary transition-all duration-300"
             />
           </div>
         )}

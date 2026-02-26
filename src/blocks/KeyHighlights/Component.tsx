@@ -103,7 +103,7 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="card-animate border border-border rounded-xl p-6 space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20 text-center flex flex-col items-center"
+                className="card-animate bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20 text-center flex flex-col items-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div

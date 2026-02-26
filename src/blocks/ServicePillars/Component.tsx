@@ -84,7 +84,7 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 {/* Card */}
-                <div className="relative h-full bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+                <div className="relative h-full bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
                   {/* Icon */}
                   <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors">
                     <IconComponent className="w-7 h-7 text-secondary" />
@@ -129,7 +129,7 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                 </div>
 
                 {/* Decorative number */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center border border-border">
+                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-card shadow-md flex items-center justify-center border border-border">
                   <span className="text-xl font-bold text-secondary">0{index + 1}</span>
                 </div>
               </div>

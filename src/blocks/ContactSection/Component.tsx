@@ -170,7 +170,7 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
             {showWhyContactUs &&
               whyContactUsItems &&
               (whyContactUsItems as { color: string; text: string }[]).length > 0 && (
-                <div className="bg-white border border-border rounded-xl p-6 space-y-4 mt-8">
+                <div className="bg-card border border-border rounded-xl p-6 space-y-4 mt-8">
                   <h3 className="font-semibold">{whyContactUsHeading}</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     {(whyContactUsItems as { color: string; text: string }[]).map(
@@ -192,7 +192,7 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white border border-border rounded-xl p-8 space-y-6">
+            <div className="bg-card border border-border rounded-xl p-8 space-y-6">
               <h2 className="text-2xl font-bold">{formHeading}</h2>
               {formDescription && <p className="text-muted-foreground">{formDescription}</p>}
 

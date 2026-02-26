@@ -58,7 +58,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {firstRow.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="flex-shrink-0 w-96 h-52 bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -90,7 +90,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {firstRow.map((testimonial, index) => (
                 <div
                   key={`duplicate-${index}`}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="flex-shrink-0 w-96 h-52 bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -129,7 +129,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {secondRow.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="flex-shrink-0 w-96 h-52 bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -161,7 +161,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {secondRow.map((testimonial, index) => (
                 <div
                   key={`duplicate-${index}`}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="flex-shrink-0 w-96 h-52 bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">

@@ -97,7 +97,7 @@ export const ServiceCardsBlock: React.FC<ServiceCardsBlockProps> = ({ heading, c
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="card-animate bg-white border border-border rounded-xl p-6 space-y-4 hover:shadow-lg transition-shadow"
+                className="card-animate bg-card border border-border rounded-xl p-6 space-y-4 hover:shadow-lg transition-shadow"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {Icon && (

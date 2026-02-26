@@ -23,7 +23,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
               <CMSLink
                 key={i}
                 {...link}
-                className="bg-white text-[#0a2e2a] hover:bg-primary hover:text-white font-medium px-8 transition-all duration-300"
+                className="bg-card text-primary hover:bg-primary hover:text-primary-foreground font-medium px-8 transition-all duration-300"
               />
             )
           })}
