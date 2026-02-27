@@ -218,6 +218,7 @@ export interface Page {
     | GoogleMapBlock
     | TestimonialsBlock
     | ServicePillarsBlock
+    | FixProServicesBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1141,6 +1142,75 @@ export interface ServicePillarsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FixProServicesBlock".
+ */
+export interface FixProServicesBlock {
+  heading: string;
+  subheading?: string | null;
+  services?:
+    | {
+        /**
+         * Service title (e.g., "Electric Repair")
+         */
+        title: string;
+        /**
+         * Service type (e.g., "Service Type 1")
+         */
+        subtitle?: string | null;
+        /**
+         * Brief description of the service
+         */
+        description?: string | null;
+        /**
+         * Optional link to service detail page
+         */
+        link?: (string | null) | Page;
+        icon?:
+          | (
+              | 'package'
+              | 'warehouse'
+              | 'store'
+              | 'snowflake'
+              | 'truck'
+              | 'box'
+              | 'archive'
+              | 'clipboard'
+              | 'shopping-cart'
+              | 'package-2'
+              | 'building'
+              | 'move'
+            )
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  showCTA?: boolean | null;
+  ctaText?: string | null;
+  ctaLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'fixproServices';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1459,6 +1529,7 @@ export interface PagesSelect<T extends boolean = true> {
         googleMapBlock?: T | GoogleMapBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
         servicePillars?: T | ServicePillarsBlockSelect<T>;
+        fixproServices?: T | FixProServicesBlockSelect<T>;
       };
   meta?:
     | T
@@ -1827,6 +1898,38 @@ export interface ServicePillarsBlockSelect<T extends boolean = true> {
             };
         icon?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FixProServicesBlock_select".
+ */
+export interface FixProServicesBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  services?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        description?: T;
+        link?: T;
+        icon?: T;
+        id?: T;
+      };
+  showCTA?: T;
+  ctaText?: T;
+  ctaLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
       };
   id?: T;
   blockName?: T;

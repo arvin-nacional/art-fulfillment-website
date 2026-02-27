@@ -19,6 +19,7 @@ import { HeroBlock } from '../../blocks/HeroBlock/config'
 import { GoogleMapBlock } from '../../blocks/GoogleMapBlock/config'
 import { Testimonials } from '../../blocks/Testimonials/config'
 import { ServicePillars } from '../../blocks/ServicePillars/config'
+import { FixProServices } from '../../blocks/FixProServices/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -102,6 +103,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 GoogleMapBlock,
                 Testimonials,
                 ServicePillars,
+                FixProServices,
               ],
               required: true,
               admin: {
