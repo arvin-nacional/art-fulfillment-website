@@ -2441,6 +2441,13 @@ export interface Footer {
   phone?: string | null;
   address?: string | null;
   email?: string | null;
+  socialLinks?:
+    | {
+        platform: 'facebook' | 'instagram' | 'tiktok';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
   copyrightText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2491,6 +2498,13 @@ export interface FooterSelect<T extends boolean = true> {
   phone?: T;
   address?: T;
   email?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
   copyrightText?: T;
   updatedAt?: T;
   createdAt?: T;

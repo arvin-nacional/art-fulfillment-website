@@ -47,6 +47,37 @@ export const Footer: GlobalConfig = {
       defaultValue: 'info@artfsi.com',
     },
     {
+      name: 'socialLinks',
+      type: 'array',
+      label: 'Social Media Links',
+      fields: [
+        {
+          name: 'platform',
+          type: 'select',
+          label: 'Platform',
+          options: [
+            { label: 'Facebook', value: 'facebook' },
+            { label: 'Instagram', value: 'instagram' },
+            { label: 'TikTok', value: 'tiktok' },
+          ],
+          required: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: 'URL',
+          required: true,
+          admin: {
+            placeholder: 'https://facebook.com/yourpage',
+          },
+        },
+      ],
+      maxRows: 3,
+      admin: {
+        initCollapsed: true,
+      },
+    },
+    {
       name: 'copyrightText',
       type: 'text',
       defaultValue: '© 2025 ART Fulfillment Solutions, Inc. All rights reserved.',
