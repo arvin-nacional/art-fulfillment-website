@@ -28,6 +28,7 @@ export const Number: React.FC<
         defaultValue={defaultValue}
         id={name}
         type="number"
+        className="[&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
         {...register(name, { required })}
       />
       {errors[name] && <Error name={name} />}
