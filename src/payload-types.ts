@@ -879,6 +879,10 @@ export interface ServicesOverviewBlock {
 export interface PageHeaderBlock {
   heading: string;
   description?: string | null;
+  /**
+   * Optional background image for the page header
+   */
+  backgroundImage?: (string | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'pageHeader';
@@ -1687,6 +1691,7 @@ export interface ServicesOverviewBlockSelect<T extends boolean = true> {
 export interface PageHeaderBlockSelect<T extends boolean = true> {
   heading?: T;
   description?: T;
+  backgroundImage?: T;
   id?: T;
   blockName?: T;
 }

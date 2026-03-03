@@ -82,7 +82,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
           </div>
 
           <div
-            className={`hidden md:flex justify-center items-center transition-all duration-700 delay-500 ${
+            className={`flex justify-center items-center transition-all duration-700 delay-500 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}
           >

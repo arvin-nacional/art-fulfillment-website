@@ -13,6 +13,15 @@ export const PageHeader: Block = {
       name: 'description',
       type: 'textarea',
     },
+    {
+      name: 'backgroundImage',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Background Image',
+      admin: {
+        description: 'Optional background image for the page header',
+      },
+    },
   ],
   labels: {
     plural: 'Page Headers',
