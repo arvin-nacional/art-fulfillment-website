@@ -1064,6 +1064,10 @@ export interface HeroBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Optional background image for the hero section
+   */
+  backgroundImage?: (string | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'heroBlock';
@@ -1848,6 +1852,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  backgroundImage?: T;
   id?: T;
   blockName?: T;
 }
