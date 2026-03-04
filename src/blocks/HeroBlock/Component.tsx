@@ -1,16 +1,19 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
 import type { HeroBlock as HeroBlockProps } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   heading,
   description,
   links,
   stats,
+  backgroundImage,
 }) => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -37,7 +40,20 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
       ref={sectionRef}
       className="relative overflow-hidden bg-[#a8c6c3]/20 py-16 md:py-32 2xl:h-[80vh] flex items-center"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={getMediaUrl(backgroundImage)}
+            alt={backgroundImage.alt || ''}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#00231E]/60"></div>
+        </div>
+      )}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1
@@ -49,6 +65,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
             </h1>
             {description && (
               <p
+                className={`text-lg ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'} max-w-xl transition-all duration-700 delay-150 ${
                 className={`text-base md:text-lg text-muted-foreground max-w-xl transition-all duration-700 delay-150 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
@@ -71,8 +88,12 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
                       size="lg"
                       className={
                         isPrimary
-                          ? 'bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto'
-                          : 'border-2 border-primary text-primary hover:bg-primary/10 w-full sm:w-auto bg-transparent hover:text-primary'
+                          ? backgroundImage
+                            ? 'bg-white hover:bg-white/90 text-primary w-full sm:w-auto'
+                            : 'bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto'
+                          : backgroundImage
+                            ? 'border-2 border-white text-white hover:bg-white/10 w-full sm:w-auto bg-transparent hover:text-white'
+                            : 'border-2 border-primary text-primary hover:bg-primary/10 w-full sm:w-auto bg-transparent hover:text-primary'
                       }
                     />
                   )
@@ -88,7 +109,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
-              <div className="relative bg-card border border-border rounded-2xl p-8">
+              <div className="relative bg-card/20  rounded-2xl p-8">
                 {Array.isArray(stats) && stats.length > 0 && (
                   <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                     {stats.map((stat, i) => (

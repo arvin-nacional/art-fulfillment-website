@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { link } from '@/fields/link'
 
 export const HeroBlock: Block = {
   slug: 'heroBlock',
@@ -44,6 +45,15 @@ export const HeroBlock: Block = {
       ],
       admin: {
         initCollapsed: true,
+      },
+    },
+    {
+      name: 'backgroundImage',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Background Image',
+      admin: {
+        description: 'Optional background image for the hero section',
       },
     },
   ],
