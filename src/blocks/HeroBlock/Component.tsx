@@ -35,13 +35,13 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#a8c6c3]/20 py-20 md:py-32 2xl:h-[80vh] flex items-center"
+      className="relative overflow-hidden bg-[#a8c6c3]/20 py-16 md:py-32 2xl:h-[80vh] flex items-center"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1
-              className={`text-4xl md:text-5xl font-bold text-balance leading-tight text-primary transition-all duration-700 ${
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight text-primary transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
@@ -49,7 +49,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
             </h1>
             {description && (
               <p
-                className={`text-lg text-muted-foreground max-w-xl transition-all duration-700 delay-150 ${
+                className={`text-base md:text-lg text-muted-foreground max-w-xl transition-all duration-700 delay-150 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
@@ -90,13 +90,18 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
               <div className="relative bg-card border border-border rounded-2xl p-8">
                 {Array.isArray(stats) && stats.length > 0 && (
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                     {stats.map((stat, i) => (
                       <div
                         key={i}
-                        className="bg-gradient-to-br from-background to-muted rounded-lg p-4 text-center flex flex-col items-center justify-center"
+                        className={`bg-gradient-to-br from-background to-muted rounded-lg p-4 text-center flex flex-col items-center justify-center transition-all duration-700 ${
+                          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                        }`}
+                        style={{ animationDelay: `${600 + i * 100}ms` }}
                       >
-                        <p className="text-2xl font-bold text-secondary">{stat.value}</p>
+                        <p className="text-2xl font-bold text-secondary max-sm:text-xl">
+                          {stat.value}
+                        </p>
                         <p className="text-xs text-muted-foreground">{stat.label}</p>
                       </div>
                     ))}
