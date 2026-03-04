@@ -2448,7 +2448,7 @@ export interface Footer {
   email?: string | null;
   socialLinks?:
     | {
-        platform: 'facebook' | 'instagram' | 'tiktok';
+        platform: 'facebook' | 'instagram' | 'tiktok' | 'linkedin';
         url: string;
         id?: string | null;
       }[]

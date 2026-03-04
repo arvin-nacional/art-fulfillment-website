@@ -59,6 +59,7 @@ export const Footer: GlobalConfig = {
             { label: 'Facebook', value: 'facebook' },
             { label: 'Instagram', value: 'instagram' },
             { label: 'TikTok', value: 'tiktok' },
+            { label: 'LinkedIn', value: 'linkedin' },
           ],
           required: true,
         },
@@ -72,7 +73,7 @@ export const Footer: GlobalConfig = {
           },
         },
       ],
-      maxRows: 3,
+      maxRows: 4,
       admin: {
         initCollapsed: true,
       },

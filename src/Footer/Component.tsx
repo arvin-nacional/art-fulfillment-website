@@ -1,7 +1,7 @@
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import React from 'react'
-import { Facebook, Instagram } from 'lucide-react'
+import { Facebook, Instagram, Linkedin } from 'lucide-react'
 import Image from 'next/image'
 
 import type { Footer } from '@/payload-types'
@@ -38,6 +38,8 @@ export async function Footer() {
                         return <Instagram className="w-5 h-5" />
                       case 'tiktok':
                         return <Image src="/tik-tok.svg" alt="TikTok" width={20} height={20} />
+                      case 'linkedin':
+                        return <Linkedin className="w-5 h-5" />
                       default:
                         return null
                     }
