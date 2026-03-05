@@ -54,7 +54,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
         </div>
       )}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid max-md:grid-cols-1 grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1
               className={`text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight text-white transition-all duration-700 ${
@@ -74,7 +74,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
             )}
             {Array.isArray(links) && links.length > 0 && (
               <div
-                className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
+                className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 max-sm:w-full ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
