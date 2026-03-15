@@ -114,12 +114,12 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
                     {stats.map((stat, i) => (
                       <div
                         key={i}
-                        className={`bg-linear-to-br from-background to-muted/60 rounded-lg p-4 text-center flex flex-col items-center justify-center transition-all duration-700 ${
+                        className={`bg-linear-to-br from-background to-muted/80 rounded-lg p-4 text-center flex flex-col items-center justify-center transition-all duration-700 ${
                           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                         }`}
                         style={{ animationDelay: `${600 + i * 100}ms` }}
                       >
-                        <p className="text-2xl font-bold text-secondary max-sm:text-xl">
+                        <p className="text-2xl font-bold text-primary max-sm:text-xl">
                           {stat.value}
                         </p>
                         <p className="text-xs text-muted-foreground">{stat.label}</p>

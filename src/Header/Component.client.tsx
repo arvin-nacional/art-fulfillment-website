@@ -41,7 +41,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <header
-      className="bg-[#132d26] sticky top-0 z-50 transition-all duration-300"
+      className="bg-[#4C8582] sticky top-0 z-50 transition-all duration-300"
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div

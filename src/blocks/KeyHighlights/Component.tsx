@@ -103,7 +103,7 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="card-animate border border-border rounded-xl p-6 space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20 text-center flex flex-col items-center"
+                className="card-animate border border-border rounded-xl p-6 space-y-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black/20 text-center flex flex-col items-center bg-white"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div
@@ -111,8 +111,8 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                 >
                   <Icon className={`${colorClass.split(' ')[1]} h-6 w-6`} />
                 </div>
-                <h3 className="text-xl font-semibold text-white">{highlight.title}</h3>
-                <p className="text-white">{highlight.description}</p>
+                <h3 className="text-xl font-semibold text-primary">{highlight.title}</h3>
+                <p className="text-primary">{highlight.description}</p>
               </div>
             )
           })}

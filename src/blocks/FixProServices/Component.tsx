@@ -80,7 +80,7 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
         {/* Header */}
         <div className="text-center mb-16">
           {heading && (
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-primary">
               {heading}
             </h2>
           )}
@@ -105,7 +105,7 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
                 <div className="relative mb-6">
                   <div className="absolute -top-4 -left-4 w-20 h-20 bg-secondary/10 rounded-2xl transform rotate-12"></div>
                   <div className="relative bg-secondary/20 border border-secondary/30 rounded-2xl w-16 h-16 flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
-                    <IconComponent className="w-8 h-8 text-secondary" />
+                    <IconComponent className="w-8 h-8 text-primary" />
                   </div>
                 </div>
 
@@ -117,7 +117,7 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
                 )}
 
                 {/* Service Title */}
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4 text-primary">
                   {service.title}
                 </h3>
 
