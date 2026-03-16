@@ -15,6 +15,7 @@ import {
   Database,
   Target,
 } from 'lucide-react'
+import { Media } from '@/components/Media'
 
 import type { ServiceCardsBlock as ServiceCardsBlockProps } from '@/payload-types'
 
@@ -97,37 +98,44 @@ export const ServiceCardsBlock: React.FC<ServiceCardsBlockProps> = ({ heading, c
                 ref={(el) => {
                   cardsRef.current[index] = el
                 }}
-                className="card-animate bg-white border border-border rounded-xl p-6 space-y-4 hover:shadow-lg transition-shadow"
+                className="card-animate bg-white border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {Icon && (
-                  <div
-                    className={`w-12 h-12 ${iconBgClass} rounded-lg flex items-center justify-center`}
-                  >
-                    <Icon className={`${iconTextClass} h-6 w-6`} />
+                {card.image && typeof card.image === 'object' && (
+                  <div className="relative w-full h-48 bg-muted">
+                    <Media resource={card.image} imgClassName="object-cover" fill />
                   </div>
                 )}
+                <div className="p-6 space-y-4">
+                  {Icon && (
+                    <div
+                      className={`w-12 h-12 ${iconBgClass} rounded-lg flex items-center justify-center`}
+                    >
+                      <Icon className={`${iconTextClass} h-6 w-6`} />
+                    </div>
+                  )}
 
-                <h3 className="text-lg font-bold">{card.title}</h3>
+                  <h3 className="text-lg font-bold">{card.title}</h3>
 
-                {card.description && (
-                  <p className="text-sm text-muted-foreground">{card.description}</p>
-                )}
+                  {card.description && (
+                    <p className="text-sm text-muted-foreground">{card.description}</p>
+                  )}
 
-                {card.bulletPoints && card.bulletPoints.length > 0 && (
-                  <ul className="space-y-2 text-sm">
-                    {card.bulletPoints.map((item, bulletIndex) => (
-                      <li key={bulletIndex} className="flex items-start gap-2">
-                        <span
-                          className={`${item.color === 'accent' ? 'text-accent' : 'text-primary'} font-bold mt-0.5`}
-                        >
-                          •
-                        </span>
-                        <span className="text-muted-foreground">{item.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {card.bulletPoints && card.bulletPoints.length > 0 && (
+                    <ul className="space-y-2 text-sm">
+                      {card.bulletPoints.map((item, bulletIndex) => (
+                        <li key={bulletIndex} className="flex items-start gap-2">
+                          <span
+                            className={`${item.color === 'accent' ? 'text-accent' : 'text-primary'} font-bold mt-0.5`}
+                          >
+                            •
+                          </span>
+                          <span className="text-muted-foreground">{item.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             )
           })}

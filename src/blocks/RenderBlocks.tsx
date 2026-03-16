@@ -21,6 +21,7 @@ import { TestimonialsBlock } from '@/blocks/Testimonials/Component'
 import { ServicePillarsBlock } from '@/blocks/ServicePillars/Component'
 import { FixProServicesBlock } from '@/blocks/FixProServices/Component'
 import { SolutionJourneyBlock } from '@/blocks/SolutionJourney/Component'
+import { ServiceShowcaseBlock } from '@/blocks/ServiceShowcase/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -42,6 +43,7 @@ const blockComponents = {
   servicePillars: ServicePillarsBlock,
   fixproServices: FixProServicesBlock,
   solutionJourney: SolutionJourneyBlock,
+  serviceShowcase: ServiceShowcaseBlock,
 }
 
 export const RenderBlocks: React.FC<{

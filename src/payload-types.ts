@@ -220,6 +220,7 @@ export interface Page {
     | ServicePillarsBlock
     | FixProServicesBlock
     | SolutionJourneyBlock
+    | ServiceShowcaseBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1014,6 +1015,10 @@ export interface ServiceCardsBlock {
     iconColor: 'primary' | 'accent';
     title: string;
     description?: string | null;
+    /**
+     * Optional image to visualize this service
+     */
+    image?: (string | null) | Media;
     bulletPoints?:
       | {
           color: 'primary' | 'accent';
@@ -1258,6 +1263,48 @@ export interface SolutionJourneyBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'solutionJourney';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceShowcaseBlock".
+ */
+export interface ServiceShowcaseBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  description?: string | null;
+  services: {
+    icon:
+      | 'box'
+      | 'zap'
+      | 'truck'
+      | 'globe'
+      | 'bar-chart'
+      | 'shield'
+      | 'package'
+      | 'clipboard'
+      | 'settings'
+      | 'users'
+      | 'database'
+      | 'target'
+      | 'warehouse'
+      | 'mappin'
+      | 'snowflake'
+      | 'store';
+    title: string;
+    description?: string | null;
+    bulletPoints?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    image: string | Media;
+    imagePosition?: ('auto' | 'left' | 'right') | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'serviceShowcase';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1581,6 +1628,7 @@ export interface PagesSelect<T extends boolean = true> {
         servicePillars?: T | ServicePillarsBlockSelect<T>;
         fixproServices?: T | FixProServicesBlockSelect<T>;
         solutionJourney?: T | SolutionJourneyBlockSelect<T>;
+        serviceShowcase?: T | ServiceShowcaseBlockSelect<T>;
       };
   meta?:
     | T
@@ -1854,6 +1902,7 @@ export interface ServiceCardsBlockSelect<T extends boolean = true> {
         iconColor?: T;
         title?: T;
         description?: T;
+        image?: T;
         bulletPoints?:
           | T
           | {
@@ -2014,6 +2063,33 @@ export interface SolutionJourneyBlockSelect<T extends boolean = true> {
         url?: T;
         label?: T;
         appearance?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceShowcaseBlock_select".
+ */
+export interface ServiceShowcaseBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  description?: T;
+  services?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        bulletPoints?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        image?: T;
+        imagePosition?: T;
+        id?: T;
       };
   id?: T;
   blockName?: T;

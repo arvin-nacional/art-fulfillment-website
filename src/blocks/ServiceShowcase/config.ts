@@ -1,21 +1,28 @@
 import type { Block } from 'payload'
 
-export const ServiceCards: Block = {
-  slug: 'serviceCards',
-  interfaceName: 'ServiceCardsBlock',
+export const ServiceShowcase: Block = {
+  slug: 'serviceShowcase',
+  interfaceName: 'ServiceShowcaseBlock',
   fields: [
     {
       name: 'heading',
       type: 'text',
-      required: true,
-      defaultValue: 'Complete Fulfillment Solutions',
+      defaultValue: 'Our Complete Ecosystem',
     },
     {
-      name: 'cards',
+      name: 'subheading',
+      type: 'text',
+      defaultValue: 'End-to-End Solutions',
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+    },
+    {
+      name: 'services',
       type: 'array',
       required: true,
       minRows: 1,
-      maxRows: 12,
       fields: [
         {
           name: 'icon',
@@ -34,18 +41,12 @@ export const ServiceCards: Block = {
             { label: 'Users', value: 'users' },
             { label: 'Database', value: 'database' },
             { label: 'Target', value: 'target' },
+            { label: 'Warehouse', value: 'warehouse' },
+            { label: 'Map Pin', value: 'mappin' },
+            { label: 'Snowflake', value: 'snowflake' },
+            { label: 'Shopping Bag', value: 'store' },
           ],
           defaultValue: 'box',
-        },
-        {
-          name: 'iconColor',
-          type: 'select',
-          required: true,
-          options: [
-            { label: 'Primary', value: 'primary' },
-            { label: 'Accent', value: 'accent' },
-          ],
-          defaultValue: 'primary',
         },
         {
           name: 'title',
@@ -57,28 +58,9 @@ export const ServiceCards: Block = {
           type: 'textarea',
         },
         {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          label: 'Service Image',
-          admin: {
-            description: 'Optional image to visualize this service',
-          },
-        },
-        {
           name: 'bulletPoints',
           type: 'array',
           fields: [
-            {
-              name: 'color',
-              type: 'select',
-              required: true,
-              options: [
-                { label: 'Primary', value: 'primary' },
-                { label: 'Accent', value: 'accent' },
-              ],
-              defaultValue: 'accent',
-            },
             {
               name: 'text',
               type: 'text',
@@ -86,11 +68,29 @@ export const ServiceCards: Block = {
             },
           ],
         },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: 'Service Image',
+        },
+        {
+          name: 'imagePosition',
+          type: 'select',
+          label: 'Image Position',
+          defaultValue: 'auto',
+          options: [
+            { label: 'Auto (alternates)', value: 'auto' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ],
+        },
       ],
     },
   ],
   labels: {
-    plural: 'Service Cards',
-    singular: 'Service Cards',
+    plural: 'Service Showcases',
+    singular: 'Service Showcase',
   },
 }
