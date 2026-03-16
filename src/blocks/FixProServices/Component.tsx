@@ -14,7 +14,6 @@ import {
   Package2,
   Building,
   Move,
-  ArrowRight,
 } from 'lucide-react'
 
 import type { FixProServicesBlock as FixProServicesBlockProps } from '@/payload-types'

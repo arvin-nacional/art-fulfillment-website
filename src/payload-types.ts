@@ -219,6 +219,7 @@ export interface Page {
     | TestimonialsBlock
     | ServicePillarsBlock
     | FixProServicesBlock
+    | SolutionJourneyBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1219,6 +1220,47 @@ export interface FixProServicesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SolutionJourneyBlock".
+ */
+export interface SolutionJourneyBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  description?: string | null;
+  steps?:
+    | {
+        title: string;
+        description?: string | null;
+        icon?: ('globe' | 'truck' | 'shield' | 'store' | 'warehouse' | 'package' | 'mappin' | 'snowflake') | null;
+        id?: string | null;
+      }[]
+    | null;
+  showCTA?: boolean | null;
+  ctaText?: string | null;
+  ctaLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'solutionJourney';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1538,6 +1580,7 @@ export interface PagesSelect<T extends boolean = true> {
         testimonials?: T | TestimonialsBlockSelect<T>;
         servicePillars?: T | ServicePillarsBlockSelect<T>;
         fixproServices?: T | FixProServicesBlockSelect<T>;
+        solutionJourney?: T | SolutionJourneyBlockSelect<T>;
       };
   meta?:
     | T
@@ -1926,6 +1969,37 @@ export interface FixProServicesBlockSelect<T extends boolean = true> {
         subtitle?: T;
         description?: T;
         link?: T;
+        icon?: T;
+        id?: T;
+      };
+  showCTA?: T;
+  ctaText?: T;
+  ctaLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SolutionJourneyBlock_select".
+ */
+export interface SolutionJourneyBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  description?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
         icon?: T;
         id?: T;
       };
