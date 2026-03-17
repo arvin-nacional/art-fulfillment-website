@@ -83,7 +83,7 @@ export const ServiceShowcaseBlock: React.FC<ServiceShowcaseBlockProps> = ({
   }, [services])
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="pb-16 md:pb-24 pt-6 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         {(heading || subheading || description) && (
@@ -122,6 +122,7 @@ export const ServiceShowcaseBlock: React.FC<ServiceShowcaseBlockProps> = ({
             return (
               <div
                 key={service.id || index}
+                id={`service-showcase-${index}`}
                 ref={(el) => {
                   rowRefs.current[index] = el
                 }}

@@ -15,7 +15,7 @@ export const PageHeader: Block = {
     },
     {
       name: 'backgroundImage',
-      type: 'relationship',
+      type: 'upload',
       relationTo: 'media',
       label: 'Background Image',
       admin: {

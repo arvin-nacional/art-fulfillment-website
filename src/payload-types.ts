@@ -221,6 +221,7 @@ export interface Page {
     | FixProServicesBlock
     | SolutionJourneyBlock
     | ServiceShowcaseBlock
+    | ServiceQuickNavBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1308,6 +1309,41 @@ export interface ServiceShowcaseBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceQuickNavBlock".
+ */
+export interface ServiceQuickNavBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  description?: string | null;
+  services: {
+    title: string;
+    icon:
+      | 'globe'
+      | 'truck'
+      | 'shield'
+      | 'store'
+      | 'warehouse'
+      | 'package'
+      | 'mappin'
+      | 'snowflake'
+      | 'box'
+      | 'zap'
+      | 'bar-chart'
+      | 'clipboard'
+      | 'users'
+      | 'target';
+    /**
+     * The index of the service in the ServiceShowcase block to scroll to (0 = first)
+     */
+    targetIndex?: number | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'serviceQuickNav';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1629,6 +1665,7 @@ export interface PagesSelect<T extends boolean = true> {
         fixproServices?: T | FixProServicesBlockSelect<T>;
         solutionJourney?: T | SolutionJourneyBlockSelect<T>;
         serviceShowcase?: T | ServiceShowcaseBlockSelect<T>;
+        serviceQuickNav?: T | ServiceQuickNavBlockSelect<T>;
       };
   meta?:
     | T
@@ -2089,6 +2126,25 @@ export interface ServiceShowcaseBlockSelect<T extends boolean = true> {
             };
         image?: T;
         imagePosition?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceQuickNavBlock_select".
+ */
+export interface ServiceQuickNavBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  description?: T;
+  services?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        targetIndex?: T;
         id?: T;
       };
   id?: T;
