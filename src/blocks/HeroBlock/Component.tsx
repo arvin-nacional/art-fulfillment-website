@@ -50,7 +50,7 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-[#00231E]/60"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-[#323F3F]/60 to-black/75"></div>
         </div>
       )}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

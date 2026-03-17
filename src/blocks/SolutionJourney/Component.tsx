@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   Globe,
   Truck,
@@ -68,8 +69,13 @@ export const SolutionJourneyBlock: React.FC<SolutionJourneyBlockProps> = ({
     return () => observer.disconnect()
   }, [steps])
 
+  const router = useRouter()
   const row1 = steps?.slice(0, 4) ?? []
   const row2 = steps?.slice(4, 8) ?? []
+
+  const handleNavigate = (index: number) => {
+    router.push(`/services#service-showcase-${index}`)
+  }
 
   return (
     <section className="relative py-16 md:py-24 bg-white overflow-hidden">
@@ -106,7 +112,8 @@ export const SolutionJourneyBlock: React.FC<SolutionJourneyBlockProps> = ({
                       cardRefs.current[globalIndex] = el
                     }}
                     data-index={globalIndex}
-                    className={`relative bg-white border-2 border-border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-500 ${
+                    onClick={() => handleNavigate(globalIndex)}
+                    className={`relative bg-white border-2 border-border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-primary hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
                       visibleCards[globalIndex]
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-6'
@@ -164,7 +171,8 @@ export const SolutionJourneyBlock: React.FC<SolutionJourneyBlockProps> = ({
                       cardRefs.current[globalIndex] = el
                     }}
                     data-index={globalIndex}
-                    className={`relative bg-white border-2 border-border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-500 ${
+                    onClick={() => handleNavigate(globalIndex)}
+                    className={`relative bg-white border-2 border-border rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-primary hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
                       visibleCards[globalIndex]
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-6'
@@ -226,7 +234,10 @@ export const SolutionJourneyBlock: React.FC<SolutionJourneyBlockProps> = ({
                   )}
                 </div>
                 {/* Right: card */}
-                <div className="flex-1 bg-white border border-border rounded-2xl p-5 shadow-sm mb-2">
+                <div
+                  onClick={() => handleNavigate(i)}
+                  className="flex-1 bg-white border border-border rounded-2xl p-5 shadow-sm mb-2 hover:border-primary hover:shadow-md transition-all duration-300 cursor-pointer"
+                >
                   <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-3">
                     <IconComponent className="w-5 h-5 text-primary" />
                   </div>

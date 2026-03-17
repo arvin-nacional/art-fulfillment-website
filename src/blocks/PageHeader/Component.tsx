@@ -10,7 +10,7 @@ export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({
   backgroundImage,
 }) => {
   return (
-    <section className="relative py-16 md:py-32 bg-linear-to-br from-gray-950 to-primary">
+    <section className="relative py-16 md:py-32 bg-gradient-to-br from-[#323F3F] to-primary">
       {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
         <div className="absolute inset-0 z-0">
           <Image
@@ -21,7 +21,7 @@ export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-secondary/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#323F3F]/80 to-secondary/50"></div>
         </div>
       )}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">

@@ -58,6 +58,20 @@ export const ServiceShowcaseBlock: React.FC<ServiceShowcaseBlockProps> = ({
   const rowRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      const id = hash.replace('#', '')
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => {
+          const top = el.getBoundingClientRect().top + window.scrollY - 150
+          window.scrollTo({ top, behavior: 'smooth' })
+        }, 300)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     if (!services) return
     setVisible(new Array(services.length).fill(false))
 
