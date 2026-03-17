@@ -66,7 +66,7 @@ export const ServiceQuickNavBlock: React.FC<ServiceQuickNavBlockProps> = ({
     const idx = targetIndex ?? 0
     const el = document.getElementById(`service-showcase-${idx}`)
     if (!el) return
-    const offset = 150
+    const offset = 130
     const top = el.getBoundingClientRect().top + window.scrollY - offset
     window.scrollTo({ top, behavior: 'smooth' })
   }
