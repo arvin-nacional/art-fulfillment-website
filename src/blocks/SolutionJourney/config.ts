@@ -40,6 +40,7 @@ export const SolutionJourney: Block = {
           options: [
             { label: 'Globe (Market Entry)', value: 'globe' },
             { label: 'Truck (Freight)', value: 'truck' },
+            { label: 'Ship (Freight)', value: 'ship' },
             { label: 'Shield (Compliance)', value: 'shield' },
             { label: 'Store (Storefront)', value: 'store' },
             { label: 'Warehouse (Inventory)', value: 'warehouse' },
@@ -61,7 +62,7 @@ export const SolutionJourney: Block = {
         {
           title: 'Freight Services',
           description: 'Reliable inbound and outbound freight solutions for your cargo needs.',
-          icon: 'truck',
+          icon: 'ship',
         },
         {
           title: 'Compliance & Licensing',

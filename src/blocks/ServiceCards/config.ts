@@ -25,6 +25,7 @@ export const ServiceCards: Block = {
             { label: 'Box', value: 'box' },
             { label: 'Zap (Lightning)', value: 'zap' },
             { label: 'Truck', value: 'truck' },
+            { label: 'Ship (Freight)', value: 'ship' },
             { label: 'Globe', value: 'globe' },
             { label: 'Bar Chart', value: 'bar-chart' },
             { label: 'Shield', value: 'shield' },

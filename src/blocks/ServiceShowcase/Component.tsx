@@ -5,6 +5,7 @@ import {
   Box,
   Zap,
   Truck,
+  Ship,
   Globe,
   BarChart,
   Shield,
@@ -29,6 +30,7 @@ const iconMap: Record<string, LucideIcon> = {
   box: Box,
   zap: Zap,
   truck: Truck,
+  ship: Ship,
   globe: Globe,
   'bar-chart': BarChart,
   shield: Shield,
@@ -175,7 +177,7 @@ export const ServiceShowcaseBlock: React.FC<ServiceShowcaseBlockProps> = ({
                   {service.image && typeof service.image === 'object' && (
                     <Media
                       resource={service.image}
-                      imgClassName="object-cover"
+                      imgClassName="object-cover rounded-xl hover:scale-102 transition-transform duration-300"
                       fill
                       className="absolute inset-0"
                     />

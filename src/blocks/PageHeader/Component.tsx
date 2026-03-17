@@ -10,7 +10,7 @@ export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({
   backgroundImage,
 }) => {
   return (
-    <section className="relative py-16 md:py-32 bg-linear-to-br from-dark to-secondary">
+    <section className="relative py-16 md:py-32 bg-linear-to-br from-gray-950 to-primary">
       {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
         <div className="absolute inset-0 z-0">
           <Image

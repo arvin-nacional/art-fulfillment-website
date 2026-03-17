@@ -1004,6 +1004,7 @@ export interface ServiceCardsBlock {
       | 'box'
       | 'zap'
       | 'truck'
+      | 'ship'
       | 'globe'
       | 'bar-chart'
       | 'shield'
@@ -1236,7 +1237,9 @@ export interface SolutionJourneyBlock {
     | {
         title: string;
         description?: string | null;
-        icon?: ('globe' | 'truck' | 'shield' | 'store' | 'warehouse' | 'package' | 'mappin' | 'snowflake') | null;
+        icon?:
+          | ('globe' | 'truck' | 'ship' | 'shield' | 'store' | 'warehouse' | 'package' | 'mappin' | 'snowflake')
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1278,6 +1281,7 @@ export interface ServiceShowcaseBlock {
       | 'box'
       | 'zap'
       | 'truck'
+      | 'ship'
       | 'globe'
       | 'bar-chart'
       | 'shield'
@@ -1320,6 +1324,7 @@ export interface ServiceQuickNavBlock {
     icon:
       | 'globe'
       | 'truck'
+      | 'ship'
       | 'shield'
       | 'store'
       | 'warehouse'

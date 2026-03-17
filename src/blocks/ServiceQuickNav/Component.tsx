@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import {
   Globe,
   Truck,
+  Ship,
   Shield,
   ShoppingBag,
   Warehouse,
@@ -24,6 +25,7 @@ import type { ServiceQuickNavBlock as ServiceQuickNavBlockProps } from '@/payloa
 const iconMap: Record<string, LucideIcon> = {
   globe: Globe,
   truck: Truck,
+  ship: Ship,
   shield: Shield,
   store: ShoppingBag,
   warehouse: Warehouse,

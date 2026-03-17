@@ -40,6 +40,7 @@ export const ServiceQuickNav: Block = {
           options: [
             { label: 'Globe (Market Entry)', value: 'globe' },
             { label: 'Truck (Freight)', value: 'truck' },
+            { label: 'Ship (Freight)', value: 'ship' },
             { label: 'Shield (Compliance)', value: 'shield' },
             { label: 'Store (Storefront)', value: 'store' },
             { label: 'Warehouse (Inventory)', value: 'warehouse' },
@@ -67,7 +68,7 @@ export const ServiceQuickNav: Block = {
       ],
       defaultValue: [
         { title: 'Market Entry Support', icon: 'globe', targetIndex: 0 },
-        { title: 'Freight Services', icon: 'truck', targetIndex: 1 },
+        { title: 'Freight Services', icon: 'ship', targetIndex: 1 },
         { title: 'Compliance & Licensing', icon: 'shield', targetIndex: 2 },
         { title: 'Storefront Enablement', icon: 'store', targetIndex: 3 },
         { title: 'Inventory Management', icon: 'warehouse', targetIndex: 4 },

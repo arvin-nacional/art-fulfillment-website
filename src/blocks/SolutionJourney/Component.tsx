@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import {
   Globe,
   Truck,
+  Ship,
   Shield,
   ShoppingBag,
   Warehouse,
@@ -20,6 +21,7 @@ type Step = NonNullable<SolutionJourneyBlockProps['steps']>[number]
 const iconMap: Record<string, LucideIcon> = {
   globe: Globe,
   truck: Truck,
+  ship: Ship,
   shield: Shield,
   store: ShoppingBag,
   warehouse: Warehouse,
@@ -217,7 +219,10 @@ export const SolutionJourneyBlock: React.FC<SolutionJourneyBlockProps> = ({
                     {i + 1}
                   </div>
                   {i < (steps?.length ?? 0) - 1 && (
-                    <div className="w-0.5 flex-1 bg-primary/25 mt-2 min-h-8"></div>
+                    <div className="flex flex-col items-center mt-2">
+                      <div className="w-0.5 min-h-32 flex-1 bg-primary/40"></div>
+                      <div className="w-0 h-0 border-l-4 border-r-4 border-t-8 border-l-transparent border-r-transparent border-t-primary/60"></div>
+                    </div>
                   )}
                 </div>
                 {/* Right: card */}
