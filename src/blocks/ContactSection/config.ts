@@ -94,6 +94,37 @@ export const ContactSection: Block = {
       ],
     },
     {
+      name: 'showScheduleMeeting',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Show "Schedule a Meeting" Section',
+    },
+    {
+      name: 'scheduleMeetingHeading',
+      type: 'text',
+      defaultValue: 'Schedule a Meeting',
+      admin: {
+        condition: (data, siblingData) => siblingData?.showScheduleMeeting,
+      },
+    },
+    {
+      name: 'scheduleMeetingDescription',
+      type: 'textarea',
+      defaultValue: 'Prefer a face-to-face conversation? Book a free consultation with our team.',
+      admin: {
+        condition: (data, siblingData) => siblingData?.showScheduleMeeting,
+      },
+    },
+    {
+      name: 'scheduleMeetingUrl',
+      type: 'text',
+      label: 'Meeting Link URL',
+      defaultValue: 'https://calendar.app.google/A9oS4BP5NNFpwAto7',
+      admin: {
+        condition: (data, siblingData) => siblingData?.showScheduleMeeting,
+      },
+    },
+    {
       name: 'formHeading',
       type: 'text',
       required: true,

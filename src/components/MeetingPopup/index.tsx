@@ -58,8 +58,8 @@ export const MeetingPopup: React.FC = () => {
           Meet With Our Team
         </h2>
         <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-          Ready to streamline your fulfillment? Schedule a free consultation with our team and let's
-          find the right solution for your business.
+          Ready to streamline your fulfillment? Schedule a free consultation with our team and
+          let&apos;s find the right solution for your business.
         </p>
 
         {/* Actions */}

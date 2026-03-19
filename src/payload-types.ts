@@ -986,6 +986,10 @@ export interface ContactSectionBlock {
         id?: string | null;
       }[]
     | null;
+  showScheduleMeeting?: boolean | null;
+  scheduleMeetingHeading?: string | null;
+  scheduleMeetingDescription?: string | null;
+  scheduleMeetingUrl?: string | null;
   formHeading: string;
   formDescription?: string | null;
   form: string | Form;
@@ -1954,6 +1958,10 @@ export interface ContactSectionBlockSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
+  showScheduleMeeting?: T;
+  scheduleMeetingHeading?: T;
+  scheduleMeetingDescription?: T;
+  scheduleMeetingUrl?: T;
   formHeading?: T;
   formDescription?: T;
   form?: T;

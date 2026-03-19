@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback, useState } from 'react'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Calendar, ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useForm, FormProvider } from 'react-hook-form'
 import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
@@ -24,6 +24,10 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
   showWhyContactUs,
   whyContactUsHeading,
   whyContactUsItems,
+  showScheduleMeeting,
+  scheduleMeetingHeading,
+  scheduleMeetingDescription,
+  scheduleMeetingUrl,
   formHeading,
   formDescription,
   form: formFromProps,
@@ -188,6 +192,33 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
                   </ul>
                 </div>
               )}
+
+            {showScheduleMeeting && (
+              <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 space-y-4 mt-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Calendar className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-foreground">
+                    {scheduleMeetingHeading || 'Schedule a Meeting'}
+                  </h3>
+                </div>
+                {scheduleMeetingDescription && (
+                  <p className="text-sm text-muted-foreground">{scheduleMeetingDescription}</p>
+                )}
+                {scheduleMeetingUrl && (
+                  <a
+                    href={scheduleMeetingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    Book a Free Consultation
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Contact Form */}
