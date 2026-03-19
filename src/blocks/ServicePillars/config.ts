@@ -38,6 +38,14 @@ export const ServicePillars: Block = {
           label: 'Acronym (e.g., FBA)',
         },
         {
+          name: 'tagline',
+          type: 'text',
+          label: 'Tagline (e.g., Outsource Everything)',
+          admin: {
+            description: 'Short colored tagline shown next to the acronym badge',
+          },
+        },
+        {
           name: 'description',
           type: 'textarea',
           label: 'Brief Description',

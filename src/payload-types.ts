@@ -1138,6 +1138,10 @@ export interface ServicePillarsBlock {
     | {
         title: string;
         acronym?: string | null;
+        /**
+         * Short colored tagline shown next to the acronym badge
+         */
+        tagline?: string | null;
         description?: string | null;
         features?:
           | {
@@ -2033,6 +2037,7 @@ export interface ServicePillarsBlockSelect<T extends boolean = true> {
     | {
         title?: T;
         acronym?: T;
+        tagline?: T;
         description?: T;
         features?:
           | T

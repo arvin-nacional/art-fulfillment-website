@@ -90,13 +90,22 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                     <IconComponent className="w-7 h-7 text-secondary" />
                   </div>
 
-                  {/* Title & Acronym */}
+                  {/* Title & Acronym + Tagline */}
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-primary mb-1">{pillar.title}</h3>
-                    {pillar.acronym && (
-                      <span className="inline-block px-3 py-1 text-xs font-semibold bg-secondary/20 text-secondary rounded-full">
-                        {pillar.acronym}
-                      </span>
+                    <h3 className="text-2xl font-bold text-primary mb-2">{pillar.title}</h3>
+                    {(pillar.acronym || pillar.tagline) && (
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {pillar.acronym && (
+                          <span className="inline-block px-2 py-0.5 text-xs font-bold bg-secondary/20 text-secondary rounded">
+                            {pillar.acronym}
+                          </span>
+                        )}
+                        {pillar.tagline && (
+                          <span className="text-lg font-semibold text-primary">
+                            {pillar.tagline}
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
 
