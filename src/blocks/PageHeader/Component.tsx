@@ -1,8 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
 
 import type { PageHeaderBlock as PageHeaderBlockProps } from '@/payload-types'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { Media } from '@/components/Media'
 
 export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({
   heading,
@@ -11,16 +10,9 @@ export const PageHeaderBlock: React.FC<PageHeaderBlockProps> = ({
 }) => {
   return (
     <section className="relative py-16 md:py-32 bg-gradient-to-br from-[#323F3F] to-primary">
-      {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
+      {backgroundImage && typeof backgroundImage === 'object' && (
         <div className="absolute inset-0 z-0">
-          <Image
-            src={getMediaUrl(backgroundImage)}
-            alt={backgroundImage.alt || ''}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+          <Media resource={backgroundImage} fill imgClassName="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-br from-[#323F3F]/80 to-secondary/50"></div>
         </div>
       )}

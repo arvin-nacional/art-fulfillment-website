@@ -170,29 +170,6 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
                 },
               )}
             </div>
-
-            {showWhyContactUs &&
-              whyContactUsItems &&
-              (whyContactUsItems as { color: string; text: string }[]).length > 0 && (
-                <div className="bg-white border border-border rounded-xl p-6 space-y-4 mt-8">
-                  <h3 className="font-semibold">{whyContactUsHeading}</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {(whyContactUsItems as { color: string; text: string }[]).map(
-                      (item: { color: string; text: string }, index: number) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <span
-                            className={`${item.color === 'accent' ? 'text-accent' : 'text-primary'} font-bold`}
-                          >
-                            •
-                          </span>
-                          <span>{item.text}</span>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-              )}
-
             {showScheduleMeeting && (
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 space-y-4 mt-8">
                 <div className="flex items-center gap-3">
@@ -219,6 +196,27 @@ export const ContactSectionBlock: React.FC<ContactSectionBlockProps> = ({
                 )}
               </div>
             )}
+            {showWhyContactUs &&
+              whyContactUsItems &&
+              (whyContactUsItems as { color: string; text: string }[]).length > 0 && (
+                <div className="bg-white border border-border rounded-xl p-6 space-y-4 mt-8">
+                  <h3 className="font-semibold">{whyContactUsHeading}</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {(whyContactUsItems as { color: string; text: string }[]).map(
+                      (item: { color: string; text: string }, index: number) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span
+                            className={`${item.color === 'accent' ? 'text-accent' : 'text-primary'} font-bold`}
+                          >
+                            •
+                          </span>
+                          <span>{item.text}</span>
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              )}
           </div>
 
           {/* Contact Form */}
