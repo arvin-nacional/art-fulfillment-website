@@ -222,6 +222,7 @@ export interface Page {
     | SolutionJourneyBlock
     | ServiceShowcaseBlock
     | ServiceQuickNavBlock
+    | ImageStatsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1353,6 +1354,30 @@ export interface ServiceQuickNavBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageStatsBlock".
+ */
+export interface ImageStatsBlock {
+  /**
+   * Small uppercase label above heading (e.g., "STATISTICS")
+   */
+  eyebrow?: string | null;
+  heading: string;
+  description?: string | null;
+  leftImage?: (string | null) | Media;
+  rightImage?: (string | null) | Media;
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageStats';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1675,6 +1700,7 @@ export interface PagesSelect<T extends boolean = true> {
         solutionJourney?: T | SolutionJourneyBlockSelect<T>;
         serviceShowcase?: T | ServiceShowcaseBlockSelect<T>;
         serviceQuickNav?: T | ServiceQuickNavBlockSelect<T>;
+        imageStats?: T | ImageStatsBlockSelect<T>;
       };
   meta?:
     | T
@@ -2155,6 +2181,26 @@ export interface ServiceQuickNavBlockSelect<T extends boolean = true> {
         title?: T;
         icon?: T;
         targetIndex?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageStatsBlock_select".
+ */
+export interface ImageStatsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  heading?: T;
+  description?: T;
+  leftImage?: T;
+  rightImage?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
         id?: T;
       };
   id?: T;

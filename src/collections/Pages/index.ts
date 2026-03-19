@@ -23,6 +23,7 @@ import { FixProServices } from '../../blocks/FixProServices/config'
 import { SolutionJourney } from '../../blocks/SolutionJourney/config'
 import { ServiceShowcase } from '../../blocks/ServiceShowcase/config'
 import { ServiceQuickNav } from '../../blocks/ServiceQuickNav/config'
+import { ImageStats } from '../../blocks/ImageStats/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -110,6 +111,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 SolutionJourney,
                 ServiceShowcase,
                 ServiceQuickNav,
+                ImageStats,
               ],
               required: true,
               admin: {
