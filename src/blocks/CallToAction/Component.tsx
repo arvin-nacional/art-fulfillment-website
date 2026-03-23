@@ -1,10 +1,10 @@
 import React from 'react'
 
-import type { CallToActionBlock as CTABlockProps, Media } from '@/payload-types'
+import type { CallToActionBlock as CTABlockProps, Media as MediaType } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { Media } from '@/components/Media'
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({
   links,
@@ -12,24 +12,15 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
   backgroundVideo,
   overlayOpacity = 60,
 }) => {
-  const video = backgroundVideo as Media | undefined
-  const videoUrl = video ? getMediaUrl(video) : null
-  const hasVideo = Boolean(videoUrl)
+  const video = backgroundVideo as MediaType | undefined
+  const hasVideo = Boolean(video)
   const opacity = (overlayOpacity ?? 60) / 100
 
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
       {/* Video Background */}
-      {hasVideo && videoUrl && (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={videoUrl} type="video/mp4" />
-        </video>
+      {hasVideo && video && (
+        <Media resource={video} videoClassName="absolute inset-0 w-full h-full object-cover" />
       )}
 
       {/* Overlay / Gradient fallback */}
