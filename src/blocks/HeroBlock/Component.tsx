@@ -7,6 +7,7 @@ import type { HeroBlock as HeroBlockProps } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { Media } from '@/components/Media'
 
 export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   heading,
@@ -42,14 +43,15 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
     >
       {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
         <div className="absolute inset-0 z-0">
-          <Image
+          <Media resource={backgroundImage} fill imgClassName="object-cover" priority />
+          {/* <Image
             src={getMediaUrl(backgroundImage)}
             alt={backgroundImage.alt || ''}
             fill
             className="object-cover"
             sizes="100vw"
             priority
-          />
+          /> */}
           <div className="absolute inset-0 bg-linear-to-b from-[#323F3F]/60 to-black/75"></div>
         </div>
       )}
