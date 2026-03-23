@@ -1158,6 +1158,10 @@ export interface ServicePillarsBlock {
             }[]
           | null;
         icon?: ('warehouse' | 'truck' | 'settings' | 'chart' | 'package' | 'shield') | null;
+        /**
+         * Color for acronym badge, title, and tagline
+         */
+        color?: ('teal' | 'blue' | 'green') | null;
         id?: string | null;
       }[]
     | null;
@@ -2080,6 +2084,7 @@ export interface ServicePillarsBlockSelect<T extends boolean = true> {
               id?: T;
             };
         icon?: T;
+        color?: T;
         id?: T;
       };
   id?: T;

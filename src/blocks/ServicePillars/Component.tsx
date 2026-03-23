@@ -14,6 +14,39 @@ const iconMap = {
   shield: Shield,
 }
 
+const colorMap = {
+  teal: {
+    badge: 'border-[#4C8582] text-[#4C8582]',
+    line: 'from-[#4C8582]/40',
+    iconBg: 'bg-[#4C8582]/20',
+    iconText: 'text-[#4C8582]',
+    title: 'text-[#4C8582]',
+    tagline: 'text-[#4C8582]',
+    checkBg: 'bg-[#4C8582]/20',
+    checkIcon: 'text-[#4C8582]',
+  },
+  blue: {
+    badge: 'border-[#4C6C85] text-[#4C6C85]',
+    line: 'from-[#4C6C85]/40',
+    iconBg: 'bg-[#4C6C85]/20',
+    iconText: 'text-[#4C6C85]',
+    title: 'text-[#4C6C85]',
+    tagline: 'text-[#4C6C85]',
+    checkBg: 'bg-[#4C6C85]/20',
+    checkIcon: 'text-[#4C6C85]',
+  },
+  green: {
+    badge: 'border-[#4C8566] text-[#4C8566]',
+    line: 'from-[#4C8566]/40',
+    iconBg: 'bg-[#4C8566]/20',
+    iconText: 'text-[#4C8566]',
+    title: 'text-[#4C8566]',
+    tagline: 'text-[#4C8566]',
+    checkBg: 'bg-[#4C8566]/20',
+    checkIcon: 'text-[#4C8566]',
+  },
+}
+
 const parseFeatureText = (text: string) => {
   const parts = text.split(/(\*\*[^*]+\*\*)/g)
   return parts.map((part, i) => {
@@ -74,6 +107,7 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars?.map((pillar, index) => {
             const IconComponent = iconMap[pillar.icon as keyof typeof iconMap] || Package
+            const colors = colorMap[pillar.color as keyof typeof colorMap] || colorMap.teal
 
             return (
               <div
@@ -90,18 +124,13 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                     <IconComponent className="w-7 h-7 text-secondary" />
                   </div>
 
-                  {/* Title & Acronym + Tagline */}
+                  {/* Title + Tagline */}
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-primary mb-2">{pillar.title}</h3>
+                    <h3 className={`text-2xl font-bold mb-2 ${colors.title}`}>{pillar.title}</h3>
                     {(pillar.acronym || pillar.tagline) && (
-                      <div className="flex items-center gap-2 flex-wrap">
-                        {pillar.acronym && (
-                          <span className="inline-block px-2 py-0.5 text-xs font-bold bg-secondary/20 text-secondary rounded">
-                            {pillar.acronym}
-                          </span>
-                        )}
+                      <div className="flex items-center gap-2 flex-wrap px-4 py-2 bg-secondary/20 rounded-2xl w-fit">
                         {pillar.tagline && (
-                          <span className="text-lg font-semibold text-primary">
+                          <span className={`text-base font-semibold ${colors.tagline}`}>
                             {pillar.tagline}
                           </span>
                         )}
@@ -137,9 +166,9 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                   <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-secondary/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
-                {/* Decorative number */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center border border-border">
-                  <span className="text-xl font-bold text-secondary">0{index + 1}</span>
+                {/* Decorative acronym */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center border border-border">
+                  <span className={`text-xl font-bold ${colors.tagline}`}>{pillar.acronym}</span>
                 </div>
               </div>
             )

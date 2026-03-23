@@ -83,6 +83,20 @@ export const ServicePillars: Block = {
           ],
           defaultValue: 'package',
         },
+        {
+          name: 'color',
+          type: 'select',
+          label: 'Color Theme',
+          options: [
+            { label: 'Teal (#4C8582)', value: 'teal' },
+            { label: 'Blue (#4C6C85)', value: 'blue' },
+            { label: 'Green (#4C8566)', value: 'green' },
+          ],
+          defaultValue: 'teal',
+          admin: {
+            description: 'Color for acronym badge, title, and tagline',
+          },
+        },
       ],
       admin: {
         initCollapsed: false,
