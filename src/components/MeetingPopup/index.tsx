@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { X, Calendar, ArrowRight } from 'lucide-react'
 
-const CALENDAR_URL = 'https://calendar.app.google/A9oS4BP5NNFpwAto7'
+const CALENDAR_URL = 'https://calendar.app.google/TTLw1jDwjR9bDGZ36'
 
 export const MeetingPopup: React.FC = () => {
   const [visible, setVisible] = useState(false)
