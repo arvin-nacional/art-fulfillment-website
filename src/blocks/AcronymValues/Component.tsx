@@ -36,22 +36,6 @@ export const AcronymValuesBlock: React.FC<AcronymValuesBlockProps> = ({
               {subheading}
             </p>
           )}
-
-          {/* Large decorative acronym */}
-          {/* <div className="mt-10 flex justify-center items-end gap-0.5">
-            {values?.map((v: Value, i: number) => (
-              <span
-                key={i}
-                className="text-6xl md:text-8xl lg:text-9xl font-black leading-none select-none"
-                style={{
-                  color: activeIndex === i ? 'hsl(var(--primary))' : 'hsl(var(--primary) / 0.10)',
-                  transition: 'color 0.3s ease',
-                }}
-              >
-                {v.letter}
-              </span>
-            ))}
-          </div> */}
         </div>
 
         {/* Letter Tiles */}
