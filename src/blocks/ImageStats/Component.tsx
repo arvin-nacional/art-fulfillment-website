@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { Media } from '@/components/Media'
 import type { ImageStatsBlock as ImageStatsBlockProps } from '@/payload-types'
 
@@ -12,33 +10,22 @@ export const ImageStatsBlock: React.FC<ImageStatsBlockProps> = ({
   rightImage,
   stats,
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true)
-      },
-      { threshold: 0.1 },
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden">
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
+      <style>{`
+        @keyframes statsLeft  { from { opacity:0; transform:translateX(-2.5rem); } to { opacity:1; transform:translateX(0); } }
+        @keyframes statsRight { from { opacity:0; transform:translateX( 2.5rem); } to { opacity:1; transform:translateX(0); } }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left column: portrait image + stats */}
           <div
-            className={`flex flex-col gap-8 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
+            className="flex flex-col gap-8"
+            style={{ animation: 'statsLeft 0.7s ease-out both' }}
           >
             {/* Portrait image */}
             {leftImage && (
-              <div className="relative w-full aspect-[5/4] rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative w-full aspect-5/4 rounded-2xl overflow-hidden shadow-lg">
                 <Media resource={leftImage} fill imgClassName="object-cover w-full h-full" />
               </div>
             )}
@@ -63,9 +50,8 @@ export const ImageStatsBlock: React.FC<ImageStatsBlockProps> = ({
 
           {/* Right column: content + landscape image */}
           <div
-            className={`flex flex-col gap-6 transition-all duration-700 delay-150 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}
+            className="flex flex-col gap-6"
+            style={{ animation: 'statsRight 0.7s 0.15s ease-out both' }}
           >
             {/* Eyebrow + Heading + Description */}
             <div className="flex flex-col gap-4">
@@ -86,7 +72,7 @@ export const ImageStatsBlock: React.FC<ImageStatsBlockProps> = ({
 
             {/* Landscape image */}
             {rightImage && (
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-lg">
                 <Media resource={rightImage} fill imgClassName="object-cover w-full h-full" />
               </div>
             )}

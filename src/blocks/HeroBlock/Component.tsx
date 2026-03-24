@@ -1,12 +1,8 @@
-'use client'
-
-import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+import React from 'react'
 
 import type { HeroBlock as HeroBlockProps } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { Media } from '@/components/Media'
 
 export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
@@ -16,31 +12,20 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
   stats,
   backgroundImage,
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-[#a8c6c3]/20 py-16 md:py-32 2xl:h-[80vh] flex items-center"
-    >
+    <section className="relative overflow-hidden bg-[#a8c6c3]/20 py-16 md:py-32 2xl:h-[80vh] flex items-center">
+      <style>{`
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(2rem); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroFadeRight {
+          from { opacity: 0; transform: translateX(2rem); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        .hero-fade-up   { animation: heroFadeUp 0.7s ease-out both; }
+        .hero-fade-right { animation: heroFadeRight 0.7s ease-out both; }
+      `}</style>
       {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
         <div className="absolute inset-0 z-0">
           <Media
@@ -65,26 +50,23 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
         <div className="grid max-md:grid-cols-1 grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1
-              className={`text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight text-white transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight text-white hero-fade-up"
+              style={{ animationDelay: '0.1s' }}
             >
               {heading}
             </h1>
             {description && (
               <p
-                className={`text-lg ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'} max-w-xl transition-all duration-700 delay-150 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className={`text-lg ${backgroundImage ? 'text-white/90' : 'text-muted-foreground'} max-w-xl hero-fade-up`}
+                style={{ animationDelay: '0.25s' }}
               >
                 {description}
               </p>
             )}
             {Array.isArray(links) && links.length > 0 && (
               <div
-                className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 max-sm:w-full ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className="flex flex-col sm:flex-row gap-4 max-sm:w-full hero-fade-up"
+                style={{ animationDelay: '0.4s' }}
               >
                 {links.map(({ link }, i) => {
                   const isPrimary = i === 0
@@ -110,9 +92,8 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
           </div>
 
           <div
-            className={`flex justify-center items-center transition-all duration-700 delay-500 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-            }`}
+            className="flex justify-center items-center hero-fade-right"
+            style={{ animationDelay: '0.5s' }}
           >
             <div className="relative">
               <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
@@ -122,10 +103,8 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
                     {stats.map((stat, i) => (
                       <div
                         key={i}
-                        className={`bg-linear-to-br from-background to-muted/80 rounded-lg p-4 text-center flex flex-col items-center justify-center transition-all duration-700 ${
-                          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                        }`}
-                        style={{ animationDelay: `${600 + i * 100}ms` }}
+                        className="bg-linear-to-br from-background to-muted/80 rounded-lg p-4 text-center flex flex-col items-center justify-center hero-fade-up"
+                        style={{ animationDelay: `${0.6 + i * 0.1}s` }}
                       >
                         <p className="text-2xl font-bold text-primary max-sm:text-xl">
                           {stat.value}

@@ -1,5 +1,4 @@
-'use client'
-
+import React from 'react'
 import { Star } from 'lucide-react'
 import type { TestimonialsBlock as TestimonialsBlockProps } from '@/payload-types'
 
@@ -22,7 +21,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scrollLeft {
           0% {
             transform: translateX(0);
@@ -47,8 +46,8 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
 
       <div className="relative space-y-8">
         {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
         {/* First row - scrolling left */}
         {firstRow.length > 0 && (
@@ -58,7 +57,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {firstRow.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -72,7 +71,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                   </div>
                   <div className="flex items-center gap-3 pt-4">
                     <div
-                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs flex-shrink-0`}
+                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs shrink-0`}
                     >
                       {testimonial.initials}
                     </div>
@@ -90,7 +89,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {firstRow.map((testimonial, index) => (
                 <div
                   key={`duplicate-${index}`}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -104,7 +103,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                   </div>
                   <div className="flex items-center gap-3 pt-4">
                     <div
-                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs flex-shrink-0`}
+                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs shrink-0`}
                     >
                       {testimonial.initials}
                     </div>
@@ -129,7 +128,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {secondRow.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -143,7 +142,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                   </div>
                   <div className="flex items-center gap-3 pt-4">
                     <div
-                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs flex-shrink-0`}
+                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs shrink-0`}
                     >
                       {testimonial.initials}
                     </div>
@@ -161,7 +160,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               {secondRow.map((testimonial, index) => (
                 <div
                   key={`duplicate-${index}`}
-                  className="flex-shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="shrink-0 w-96 h-52 bg-white border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex gap-1 mb-3">
@@ -175,7 +174,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                   </div>
                   <div className="flex items-center gap-3 pt-4">
                     <div
-                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs flex-shrink-0`}
+                      className={`w-10 h-10 rounded-full ${testimonial.bgColor} flex items-center justify-center font-semibold text-foreground text-xs shrink-0`}
                     >
                       {testimonial.initials}
                     </div>

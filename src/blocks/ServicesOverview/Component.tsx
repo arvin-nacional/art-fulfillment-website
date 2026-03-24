@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 
 import type { ServicesOverviewBlock as ServicesOverviewBlockProps } from '@/payload-types'
@@ -15,52 +13,10 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
   ctaText,
   ctaLink,
 }) => {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in')
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      },
-    )
-
-    cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card)
-    })
-
-    return () => observer.disconnect()
-  }, [services])
-
   return (
     <section className="py-16 md:py-24 bg-[#a8c6c3]/20">
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .card-animate {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-
-        .card-animate.animate-in {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
+      <style>{`
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,11 +39,11 @@ export const ServicesOverviewBlock: React.FC<ServicesOverviewBlockProps> = ({
             return (
               <div
                 key={index}
-                ref={(el) => {
-                  cardsRef.current[index] = el
+                className="bg-white border border-border rounded-xl p-8 flex items-start gap-4 transition-all duration-300 hover:scale-101 hover:shadow-lg hover:shadow-black/20"
+                style={{
+                  animation: 'fadeInUp 0.6s ease-out both',
+                  animationDelay: `${index * 0.1}s`,
                 }}
-                className="card-animate bg-white border border-border rounded-xl p-8 flex items-start gap-4 transition-all duration-300 hover:scale-101 hover:shadow-lg hover:shadow-black/20"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="shrink-0">
                   <CheckCircle className={`${iconColorClass} h-6 w-6 mt-1`} />

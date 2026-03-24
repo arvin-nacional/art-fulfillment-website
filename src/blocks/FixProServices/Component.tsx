@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {
   Package,
   Warehouse,
@@ -41,30 +39,6 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
   showCTA,
   ctaLink,
 }) => {
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in')
-          }
-        })
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-      },
-    )
-
-    cardsRef.current.forEach((card) => {
-      if (card) observer.observe(card)
-    })
-
-    return () => observer.disconnect()
-  }, [services])
-
   return (
     <section className="relative py-16 md:py-24 bg-[#a8c6c3]/20 overflow-hidden">
       {/* Decorative shapes */}
@@ -94,11 +68,11 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
             return (
               <div
                 key={service.id || index}
-                ref={(el) => {
-                  cardsRef.current[index] = el
+                className="relative bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 hover:-translate-y-2 flex-1 min-w-[300px]"
+                style={{
+                  animation: 'fadeInUp 0.6s ease-out both',
+                  animationDelay: `${index * 0.1}s`,
                 }}
-                className="service-card relative bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 hover:-translate-y-2 opacity-0 translate-y-8 flex-1 min-w-[300px]"
-                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Icon Box */}
                 <div className="relative mb-6">
@@ -128,7 +102,7 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
                 )}
 
                 {/* Decorative bottom border */}
-                <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent rounded-full"></div>
+                <div className="absolute bottom-0 left-8 right-8 h-1 bg-linear-to-r from-transparent via-primary/30 to-transparent rounded-full"></div>
               </div>
             )
           })}
@@ -143,21 +117,8 @@ export const FixProServicesBlock: React.FC<FixProServicesBlockProps> = ({
         )}
       </div>
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .service-card.animate-in {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
+      <style>{`
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
       `}</style>
     </section>
   )
