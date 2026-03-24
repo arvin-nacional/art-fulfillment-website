@@ -223,6 +223,7 @@ export interface Page {
     | ServiceShowcaseBlock
     | ServiceQuickNavBlock
     | ImageStatsBlock
+    | AcronymValuesBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1386,6 +1387,28 @@ export interface ImageStatsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AcronymValuesBlock".
+ */
+export interface AcronymValuesBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  values?:
+    | {
+        /**
+         * Single character representing this value in the acronym
+         */
+        letter: string;
+        word: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'acronymValues';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1709,6 +1732,7 @@ export interface PagesSelect<T extends boolean = true> {
         serviceShowcase?: T | ServiceShowcaseBlockSelect<T>;
         serviceQuickNav?: T | ServiceQuickNavBlockSelect<T>;
         imageStats?: T | ImageStatsBlockSelect<T>;
+        acronymValues?: T | AcronymValuesBlockSelect<T>;
       };
   meta?:
     | T
@@ -2214,6 +2238,24 @@ export interface ImageStatsBlockSelect<T extends boolean = true> {
     | {
         value?: T;
         label?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AcronymValuesBlock_select".
+ */
+export interface AcronymValuesBlockSelect<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  values?:
+    | T
+    | {
+        letter?: T;
+        word?: T;
+        description?: T;
         id?: T;
       };
   id?: T;

@@ -24,6 +24,7 @@ import { SolutionJourney } from '../../blocks/SolutionJourney/config'
 import { ServiceShowcase } from '../../blocks/ServiceShowcase/config'
 import { ServiceQuickNav } from '../../blocks/ServiceQuickNav/config'
 import { ImageStats } from '../../blocks/ImageStats/config'
+import { AcronymValues } from '../../blocks/AcronymValues/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -112,6 +113,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ServiceShowcase,
                 ServiceQuickNav,
                 ImageStats,
+                AcronymValues,
               ],
               required: true,
               admin: {

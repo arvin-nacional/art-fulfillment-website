@@ -43,7 +43,13 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
     >
       {backgroundImage && typeof backgroundImage === 'object' && backgroundImage.url && (
         <div className="absolute inset-0 z-0">
-          <Media resource={backgroundImage} fill imgClassName="object-cover" priority />
+          <Media
+            resource={backgroundImage}
+            fill
+            imgClassName="object-cover"
+            className="absolute inset-0"
+            priority
+          />
           {/* <Image
             src={getMediaUrl(backgroundImage)}
             alt={backgroundImage.alt || ''}
