@@ -49,7 +49,7 @@ export const HeroBlock: Block = {
     },
     {
       name: 'backgroundImage',
-      type: 'relationship',
+      type: 'upload',
       relationTo: 'media',
       label: 'Background Image',
       admin: {
