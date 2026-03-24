@@ -19,21 +19,23 @@ export const getMediaUrl = (
   // Handle resource object case
   if (urlOrResource && typeof urlOrResource === 'object') {
     const resource = urlOrResource as MediaResource
+    const tag = resource.updatedAt || cacheTag
 
-    // Try URL first
-    if (resource.url) {
-      return getMediaUrl(resource.url, resource.updatedAt || cacheTag)
-    }
-
-    // Then try filename with S3 construction
+    // Prefer constructing directly from filename when S3 is configured.
+    // This bypasses stale/expired signed URLs that may be stored in resource.url.
     if (resource.filename) {
       const s3Bucket = process.env.NEXT_PUBLIC_S3_BUCKET || process.env.S3_BUCKET
       const s3Region = process.env.NEXT_PUBLIC_S3_REGION || process.env.S3_REGION
 
       if (s3Bucket && s3Region) {
         const s3Url = `https://${s3Bucket}.s3.${s3Region}.amazonaws.com/${resource.filename}`
-        return cacheTag ? `${s3Url}?${encodeURIComponent(cacheTag)}` : s3Url
+        return tag ? `${s3Url}?${encodeURIComponent(tag)}` : s3Url
       }
+    }
+
+    // Fall back to stored URL (local storage or CDN without S3 env vars)
+    if (resource.url) {
+      return getMediaUrl(resource.url, tag)
     }
 
     return ''
