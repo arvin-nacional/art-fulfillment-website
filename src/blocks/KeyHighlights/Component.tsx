@@ -51,7 +51,7 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {highlights?.map((highlight, index) => {
             const Icon = iconMap[highlight.icon as keyof typeof iconMap] || Zap
             const colorClass = 'bg-secondary text-white'
@@ -70,7 +70,14 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                 >
                   <Icon className={`${colorClass.split(' ')[1]} h-6 w-6`} />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">{highlight.title}</h3>
+                <h3 className="text-xl font-semibold text-primary">
+                  {highlight.title?.split(/\\n|\n/).map((line, i, arr) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < arr.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </h3>
                 <p className="text-primary">{highlight.description}</p>
               </div>
             )

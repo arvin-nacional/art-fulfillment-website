@@ -831,6 +831,9 @@ export interface KeyHighlightsBlock {
       | 'bar-chart'
       | 'target';
     iconColor: 'primary' | 'accent' | 'secondary';
+    /**
+     * Press Enter to set a line break in the title.
+     */
     title: string;
     description: string;
     id?: string | null;

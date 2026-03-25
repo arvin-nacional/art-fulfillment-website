@@ -53,8 +53,12 @@ export const KeyHighlights: Block = {
         },
         {
           name: 'title',
-          type: 'text',
+          type: 'textarea',
           required: true,
+          admin: {
+            description: 'Press Enter to set a line break in the title.',
+            rows: 2,
+          },
         },
         {
           name: 'description',
