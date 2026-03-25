@@ -38,7 +38,7 @@ export const ImageStatsBlock: React.FC<ImageStatsBlockProps> = ({
                     key={stat.id || i}
                     className="flex flex-col gap-1 border-t-2 border-primary pt-3"
                   >
-                    <span className="text-2xl md:text-3xl font-extrabold text-foreground leading-none">
+                    <span className="text-xl md:text-2xl font-extrabold text-foreground leading-none">
                       {stat.value}
                     </span>
                     <span className="text-xs text-muted-foreground leading-snug">{stat.label}</span>

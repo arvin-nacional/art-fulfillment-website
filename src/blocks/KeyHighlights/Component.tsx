@@ -74,7 +74,12 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                   {highlight.title?.split(/\\n|\n/).map((line, i, arr) => (
                     <React.Fragment key={i}>
                       {line}
-                      {i < arr.length - 1 && <br />}
+                      {i < arr.length - 1 && (
+                        <>
+                          <br className="hidden sm:block" />
+                          <span className="sm:hidden"> </span>
+                        </>
+                      )}
                     </React.Fragment>
                   ))}
                 </h3>

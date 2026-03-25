@@ -39,13 +39,13 @@ export const AcronymValuesBlock: React.FC<AcronymValuesBlockProps> = ({
         </div>
 
         {/* Letter Tiles */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
+        <div className="grid grid-cols-3 md:flex md:flex-wrap md:justify-center gap-2 md:gap-3 mb-10 w-fit mx-auto md:w-auto">
           {values?.map((v: Value, i: number) => (
             <button
               key={i}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className={`flex flex-col items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-2xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+              className={`flex flex-col items-center justify-center w-22 h-22 md:w-24 md:h-24 rounded-2xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer ${
                 activeIndex === i
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-muted text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20'
