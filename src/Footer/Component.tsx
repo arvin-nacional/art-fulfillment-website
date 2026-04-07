@@ -22,7 +22,7 @@ export async function Footer() {
           {/* Logo and Tagline */}
           <div>
             <Link href="/">
-              <Logo logoHeight={73} logoWidth={100} color="white" className="mb-4" />
+              <Logo logoHeight={80} logoWidth={80} className="mb-4" />
             </Link>
             {tagline && <p className="text-sm text-white/80 max-w-xs">{tagline}</p>}
 

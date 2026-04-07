@@ -17,7 +17,6 @@ export const Logo = (props: Props) => {
     className,
     logoHeight,
     logoWidth,
-    color,
   } = props
 
   const loading = loadingFromProps || 'lazy'
@@ -33,7 +32,7 @@ export const Logo = (props: Props) => {
       fetchPriority={priority}
       decoding="async"
       className={clsx(`max-w-[${logoWidth}px] max-h-[${logoHeight}px]`, className)}
-      src={color === 'white' ? '/art-white-logo.png' : '/art-main-logo.png'}
+      src="/logo.jpeg"
     />
   )
 }

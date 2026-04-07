@@ -25,6 +25,7 @@ import { ServiceShowcase } from '../../blocks/ServiceShowcase/config'
 import { ServiceQuickNav } from '../../blocks/ServiceQuickNav/config'
 import { ImageStats } from '../../blocks/ImageStats/config'
 import { AcronymValues } from '../../blocks/AcronymValues/config'
+import { OurStory } from '../../blocks/OurStory/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -114,6 +115,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ServiceQuickNav,
                 ImageStats,
                 AcronymValues,
+                OurStory,
               ],
               required: true,
               admin: {

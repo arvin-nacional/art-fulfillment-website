@@ -25,6 +25,7 @@ import { ServiceShowcaseBlock } from '@/blocks/ServiceShowcase/Component'
 import { ServiceQuickNavBlock } from '@/blocks/ServiceQuickNav/Component'
 import { ImageStatsBlock } from '@/blocks/ImageStats/Component'
 import { AcronymValuesBlock } from '@/blocks/AcronymValues/Component'
+import { OurStoryBlock } from '@/blocks/OurStory/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -50,6 +51,7 @@ const blockComponents = {
   serviceQuickNav: ServiceQuickNavBlock,
   imageStats: ImageStatsBlock,
   acronymValues: AcronymValuesBlock,
+  ourStory: OurStoryBlock,
 }
 
 export const RenderBlocks: React.FC<{

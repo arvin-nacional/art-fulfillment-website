@@ -224,6 +224,7 @@ export interface Page {
     | ServiceQuickNavBlock
     | ImageStatsBlock
     | AcronymValuesBlock
+    | OurStoryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1412,6 +1413,88 @@ export interface AcronymValuesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OurStoryBlock".
+ */
+export interface OurStoryBlock {
+  heading: string;
+  tagline?: string | null;
+  /**
+   * Image displayed beside the tagline and intro text.
+   */
+  image?: (string | null) | Media;
+  intro?: string | null;
+  founders?:
+    | {
+        /**
+         * Single letter representing this founder (e.g. A, R, T)
+         */
+        letter: string;
+        bio: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Text displayed below the founder cards, connecting to the closing section.
+   */
+  founderNote?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Image displayed on the left side of the closing paragraphs.
+   */
+  closingImage?: (string | null) | Media;
+  closingParagraphs?:
+    | {
+        text: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ourStory';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1736,6 +1819,7 @@ export interface PagesSelect<T extends boolean = true> {
         serviceQuickNav?: T | ServiceQuickNavBlockSelect<T>;
         imageStats?: T | ImageStatsBlockSelect<T>;
         acronymValues?: T | AcronymValuesBlockSelect<T>;
+        ourStory?: T | OurStoryBlockSelect<T>;
       };
   meta?:
     | T
@@ -2259,6 +2343,33 @@ export interface AcronymValuesBlockSelect<T extends boolean = true> {
         letter?: T;
         word?: T;
         description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OurStoryBlock_select".
+ */
+export interface OurStoryBlockSelect<T extends boolean = true> {
+  heading?: T;
+  tagline?: T;
+  image?: T;
+  intro?: T;
+  founders?:
+    | T
+    | {
+        letter?: T;
+        bio?: T;
+        id?: T;
+      };
+  founderNote?: T;
+  closingImage?: T;
+  closingParagraphs?:
+    | T
+    | {
+        text?: T;
         id?: T;
       };
   id?: T;

@@ -51,9 +51,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Logo
             loading="eager"
             priority="high"
-            logoHeight={isScrolled ? 36 : 48}
-            logoWidth={isScrolled ? 50 : 66}
-            color="white"
+            logoHeight={isScrolled ? 40 : 55}
+            logoWidth={isScrolled ? 40 : 55}
             className="transition-all duration-300"
           />
         </Link>
