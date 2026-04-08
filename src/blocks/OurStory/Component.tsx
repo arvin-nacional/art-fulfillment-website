@@ -34,13 +34,13 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
             {/* Text side */}
             <div className={image ? 'flex-1' : ''}>
               {heading && (
-                <p className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                <p className="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
                   {heading}
                 </p>
               )}
               {tagline && <h2 className="text-base md:text-lg text-white mb-6">{tagline}</h2>}
               {intro && (
-                <p className="text-white/80 text-base md:text-lg leading-relaxed">{intro}</p>
+                <p className="text-white/80 text-base md:text-md leading-relaxed">{intro}</p>
               )}
             </div>
 
