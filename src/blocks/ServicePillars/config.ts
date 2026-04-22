@@ -70,6 +70,16 @@ export const ServicePillars: Block = {
           ],
         },
         {
+          name: 'iconImage',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Icon Image (optional)',
+          admin: {
+            description:
+              'Upload a custom icon image. If set, this overrides the icon selector below.',
+          },
+        },
+        {
           name: 'icon',
           type: 'select',
           label: 'Icon',

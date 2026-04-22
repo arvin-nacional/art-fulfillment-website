@@ -42,6 +42,12 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
               {intro && (
                 <p className="text-white/80 text-base md:text-md leading-relaxed">{intro}</p>
               )}
+              <a
+                href="#founders"
+                className="mt-8 inline-block bg-white text-primary font-semibold px-6 py-3 rounded-xl shadow hover:bg-white/90 transition-colors"
+              >
+                Meet the Founders
+              </a>
             </div>
 
             {/* Image side */}
@@ -61,7 +67,7 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
 
       {/* ── Founder cards (white bg — matches ServiceCards / ServicesOverview pattern) ── */}
       {founders && founders.length > 0 && (
-        <div className="py-16 md:py-24 bg-white">
+        <div id="founders" className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {founders.map((founder, index) => (

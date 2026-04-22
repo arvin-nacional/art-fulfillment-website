@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 
 import type { KeyHighlightsBlock as KeyHighlightsBlockProps } from '@/payload-types'
+import { Media } from '@/components/Media'
 
 const iconMap = {
   zap: Zap,
@@ -65,10 +66,14 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                   animationDelay: `${index * 0.1}s`,
                 }}
               >
-                <div
-                  className={`w-12 h-12 ${colorClass.split(' ')[0]} rounded-lg flex items-center justify-center`}
-                >
-                  <Icon className={`${colorClass.split(' ')[1]} h-6 w-6`} />
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden bg-secondary">
+                  {highlight.iconImage && typeof highlight.iconImage === 'object' ? (
+                    <div className="relative w-full h-full p-1.5">
+                      <Media resource={highlight.iconImage} fill imgClassName="object-contain" />
+                    </div>
+                  ) : (
+                    <Icon className="text-white h-6 w-6" />
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-primary">
                   {highlight.title?.split(/\\n|\n/).map((line, i, arr) => (

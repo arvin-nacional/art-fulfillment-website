@@ -23,9 +23,19 @@ export const KeyHighlights: Block = {
       maxRows: 6,
       fields: [
         {
+          name: 'iconImage',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Icon Image (optional)',
+          admin: {
+            description:
+              'Upload a custom icon image. If set, this overrides the icon selector below.',
+          },
+        },
+        {
           name: 'icon',
           type: 'select',
-          required: true,
+          required: false,
           options: [
             { label: 'Zap (Lightning)', value: 'zap' },
             { label: 'Trending Up', value: 'trending-up' },

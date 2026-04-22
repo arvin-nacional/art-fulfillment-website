@@ -820,17 +820,24 @@ export interface KeyHighlightsBlock {
   heading: string;
   subheading?: string | null;
   highlights: {
-    icon:
-      | 'zap'
-      | 'trending-up'
-      | 'globe'
-      | 'package'
-      | 'truck'
-      | 'shield-check'
-      | 'clock'
-      | 'users'
-      | 'bar-chart'
-      | 'target';
+    /**
+     * Upload a custom icon image. If set, this overrides the icon selector below.
+     */
+    iconImage?: (string | null) | Media;
+    icon?:
+      | (
+          | 'zap'
+          | 'trending-up'
+          | 'globe'
+          | 'package'
+          | 'truck'
+          | 'shield-check'
+          | 'clock'
+          | 'users'
+          | 'bar-chart'
+          | 'target'
+        )
+      | null;
     iconColor: 'primary' | 'accent' | 'secondary';
     /**
      * Press Enter to set a line break in the title.
@@ -1162,6 +1169,10 @@ export interface ServicePillarsBlock {
               id?: string | null;
             }[]
           | null;
+        /**
+         * Upload a custom icon image. If set, this overrides the icon selector below.
+         */
+        iconImage?: (string | null) | Media;
         icon?: ('warehouse' | 'truck' | 'settings' | 'chart' | 'package' | 'shield') | null;
         /**
          * Color for acronym badge, title, and tagline
@@ -1931,6 +1942,7 @@ export interface KeyHighlightsBlockSelect<T extends boolean = true> {
   highlights?:
     | T
     | {
+        iconImage?: T;
         icon?: T;
         iconColor?: T;
         title?: T;
@@ -2194,6 +2206,7 @@ export interface ServicePillarsBlockSelect<T extends boolean = true> {
               feature?: T;
               id?: T;
             };
+        iconImage?: T;
         icon?: T;
         color?: T;
         id?: T;

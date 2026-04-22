@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Package, Truck, Settings, BarChart3, Warehouse, Shield, Check } from 'lucide-react'
 
 import type { ServicePillarsBlock as ServicePillarsBlockProps } from '@/payload-types'
+import { Media } from '@/components/Media'
 
 const iconMap = {
   warehouse: Warehouse,
@@ -120,8 +121,14 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                 {/* Card */}
                 <div className="relative h-full bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
                   {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors">
-                    <IconComponent className="w-7 h-7 text-secondary" />
+                  <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors overflow-hidden">
+                    {pillar.iconImage && typeof pillar.iconImage === 'object' ? (
+                      <div className="relative w-full h-full">
+                        <Media resource={pillar.iconImage} fill imgClassName="object-contain p-3" />
+                      </div>
+                    ) : (
+                      <IconComponent className="w-7 h-7 text-secondary" />
+                    )}
                   </div>
 
                   {/* Title + Tagline */}
@@ -163,7 +170,7 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                   )}
 
                   {/* Decorative gradient line */}
-                  <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-secondary/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-0 left-8 right-8 h-1 bg-linear-to-r from-transparent via-secondary/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 {/* Decorative acronym */}
