@@ -45,18 +45,24 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div
-        className={`container relative py-4 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
+        className={`flex items-stretch w-full transition-all duration-300 ${isScrolled ? 'h-14' : 'h-20'}`}
       >
-        <Link href="/">
-          <Logo
+        {/* Logo — flush left, full navbar height */}
+        <Link href="/" className="self-stretch shrink-0 overflow-hidden">
+          <img
+            src="/logo.jpeg"
+            alt="ART Fulfillment Solutions Inc. Logo"
+            className="h-full w-auto object-contain transition-all duration-300"
             loading="eager"
-            priority="high"
-            logoHeight={isScrolled ? 40 : 55}
-            logoWidth={isScrolled ? 40 : 55}
-            className="transition-all duration-300"
+            fetchPriority="high"
+            decoding="async"
           />
         </Link>
-        <HeaderNav data={data} />
+
+        {/* Nav — right side with padding */}
+        <div className="flex-1 flex items-center justify-end px-4 sm:px-6 lg:px-8">
+          <HeaderNav data={data} />
+        </div>
       </div>
     </header>
   )
