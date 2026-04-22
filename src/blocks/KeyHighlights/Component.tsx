@@ -66,9 +66,9 @@ export const KeyHighlightsBlock: React.FC<KeyHighlightsBlockProps> = ({
                   animationDelay: `${index * 0.1}s`,
                 }}
               >
-                <div className="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden bg-secondary">
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden bg-secondary p-2">
                   {highlight.iconImage && typeof highlight.iconImage === 'object' ? (
-                    <div className="relative w-full h-full p-1.5">
+                    <div className="relative w-full h-full">
                       <Media resource={highlight.iconImage} fill imgClassName="object-contain" />
                     </div>
                   ) : (
