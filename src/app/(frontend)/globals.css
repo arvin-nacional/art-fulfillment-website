@@ -249,19 +249,20 @@ html {
   background-color: rgba(255, 255, 255, 0.15) !important;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") !important;
   background-repeat: no-repeat !important;
-  background-position: right 8px center !important;
-  background-size: 12px !important;
+  background-position: right 6px center !important;
+  background-size: 10px !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   color: white !important;
   border-radius: 6px;
-  padding: 4px 26px 4px 8px !important;
-  font-size: 13px !important;
+  padding: 4px 20px 4px 8px !important;
+  font-size: 12px !important;
   cursor: pointer;
   margin: 0 !important;
   outline: none;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   appearance: none !important;
+  max-width: 120px !important;
 }
 .goog-te-combo option {
   color: #000;
