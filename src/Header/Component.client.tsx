@@ -8,6 +8,7 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import { GoogleTranslate } from '@/components/GoogleTranslate'
 
 interface HeaderClientProps {
   data: Header
@@ -63,7 +64,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </Link>
 
         {/* Nav — right side with padding */}
-        <div className="flex-1 flex items-center justify-end px-4 sm:px-6 lg:px-8">
+        <div className="flex-1 flex items-center justify-end gap-3 px-4 sm:px-6 lg:px-8">
+          <GoogleTranslate />
           <HeaderNav data={data} />
         </div>
       </div>

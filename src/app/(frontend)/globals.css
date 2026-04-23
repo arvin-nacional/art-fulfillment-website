@@ -214,6 +214,53 @@
   }
 }
 
+/* ── Google Translate widget styles ── */
+/* Kill the top banner / notification bar Google injects */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate,
+.skiptranslate > iframe,
+.goog-logo-link,
+.goog-te-gadget img,
+.goog-te-gadget > span {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+/* Reset the inline `top: 40px` Google applies to body */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+html {
+  margin-top: 0 !important;
+}
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+#google_translate_element .goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+  line-height: 1;
+}
+.goog-te-combo {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: white !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px !important;
+  cursor: pointer;
+  margin: 0 !important;
+  outline: none;
+}
+.goog-te-combo option {
+  color: #000;
+  background: #fff;
+}
+
 html {
   opacity: 0;
 }
