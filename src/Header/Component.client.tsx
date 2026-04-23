@@ -65,8 +65,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         {/* Nav — right side with padding */}
         <div className="flex-1 flex items-center justify-end gap-4 px-4 sm:px-6 lg:px-8">
+          <div className="order-first md:order-0">
+            <GoogleTranslate />
+          </div>
           <HeaderNav data={data} />
-          <GoogleTranslate />
         </div>
       </div>
     </header>
