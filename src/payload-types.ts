@@ -1459,7 +1459,7 @@ export interface OurStoryBlock {
       }[]
     | null;
   /**
-   * Text displayed below the founder cards, connecting to the closing section.
+   * Text displayed on the left side, below the founder cards, alongside the image carousel.
    */
   founderNote?: {
     root: {
@@ -1476,6 +1476,19 @@ export interface OurStoryBlock {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Images displayed in the carousel on the right side of the founder note.
+   */
+  founderNoteCarousel?:
+    | {
+        image: string | Media;
+        /**
+         * Optional caption shown below the image.
+         */
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Image displayed on the left side of the closing paragraphs.
    */
@@ -2378,6 +2391,13 @@ export interface OurStoryBlockSelect<T extends boolean = true> {
         id?: T;
       };
   founderNote?: T;
+  founderNoteCarousel?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
   closingImage?: T;
   closingParagraphs?:
     | T

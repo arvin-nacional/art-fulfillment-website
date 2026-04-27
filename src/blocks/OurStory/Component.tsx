@@ -2,6 +2,13 @@ import React from 'react'
 import type { OurStoryBlock as OurStoryBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
   heading,
@@ -10,9 +17,14 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
   intro,
   founders,
   founderNote,
+  founderNoteCarousel,
   closingImage,
   closingParagraphs,
 }) => {
+  const carouselItems = (founderNoteCarousel ?? []).filter(
+    (slide) => slide.image && typeof slide.image === 'object',
+  )
+  const hasCarousel = carouselItems.length > 0
   return (
     <section className="bg-background overflow-hidden">
       <style>{`
@@ -69,44 +81,91 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
       {founders && founders.length > 0 && (
         <div id="founders" className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-8">
               {founders.map((founder, index) => (
                 <div
                   key={founder.id || index}
-                  className="relative bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-shadow overflow-hidden"
+                  className="relative bg-card border border-border rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow overflow-hidden"
                   style={{ animation: `storyFadeUp 0.7s ${index * 0.12}s ease-out both` }}
                 >
                   {/* Watermark letter */}
                   <span
                     aria-hidden="true"
-                    className="absolute -top-2 -right-1 text-[8rem] font-black leading-none select-none pointer-events-none text-primary/6"
+                    className="absolute -top-6 -right-2 text-[10rem] md:text-[14rem] font-black leading-none select-none pointer-events-none text-primary/6"
                   >
                     {founder.letter}
                   </span>
 
-                  {/* Letter badge */}
-                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-6">
-                    <span className="text-xl font-black text-white leading-none">
-                      {founder.letter}
-                    </span>
-                  </div>
+                  <div className="flex flex-col md:flex-row md:items-start md:gap-8 relative z-10">
+                    {/* Letter badge */}
+                    <div className="shrink-0 mb-6 md:mb-0">
+                      <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center">
+                        <span className="text-2xl font-black text-white leading-none">
+                          {founder.letter}
+                        </span>
+                      </div>
+                    </div>
 
-                  <div className="text-muted-foreground text-sm leading-relaxed relative z-10">
-                    <RichText data={founder.bio} enableGutter={false} enableProse={false} />
+                    {/* Bio */}
+                    <div className="text-muted-foreground text-sm md:text-base leading-relaxed flex-1">
+                      <RichText data={founder.bio} enableGutter={false} enableProse={false} />
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-            {/* ── Founder note ── */}
-            {founderNote && (
-              <div className="bg-white">
+            {/* ── Founder note + Carousel ── */}
+            {(founderNote || hasCarousel) && (
+              <div className="pt-14 md:pt-20">
                 <div
-                  className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 text-center"
-                  style={{ animation: 'storyFadeUp 0.7s 0.1s ease-out both' }}
+                  className={`grid gap-10 lg:gap-16 items-center ${
+                    founderNote && hasCarousel ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'
+                  }`}
                 >
-                  <div className="text-base md:text-lg font-semibold text-foreground">
-                    <RichText data={founderNote} enableGutter={false} enableProse={false} />
-                  </div>
+                  {/* Founder note — left */}
+                  {founderNote && (
+                    <div
+                      className={`text-base md:text-lg font-semibold text-foreground leading-relaxed ${
+                        !hasCarousel ? 'max-w-3xl mx-auto text-center' : ''
+                      }`}
+                      style={{ animation: 'storyFadeUp 0.7s 0.1s ease-out both' }}
+                    >
+                      <RichText data={founderNote} enableGutter={false} enableProse={false} />
+                    </div>
+                  )}
+
+                  {/* Image carousel — right */}
+                  {hasCarousel && (
+                    <div
+                      className="w-full"
+                      style={{ animation: 'storyFadeUp 0.7s 0.2s ease-out both' }}
+                    >
+                      <Carousel opts={{ align: 'start', loop: true }} className="w-full">
+                        <CarouselContent>
+                          {carouselItems.map((slide, index) => (
+                            <CarouselItem key={slide.id || index}>
+                              <figure className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-xl">
+                                {typeof slide.image === 'object' && slide.image && (
+                                  <Media resource={slide.image} fill imgClassName="object-cover" />
+                                )}
+                                {slide.caption && (
+                                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent text-white text-sm md:text-base font-medium px-5 py-4">
+                                    {slide.caption}
+                                  </figcaption>
+                                )}
+                              </figure>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        {carouselItems.length > 1 && (
+                          <>
+                            <CarouselPrevious className="bg-white/90 hover:bg-white text-primary border-0 shadow-md" />
+                            <CarouselNext className="bg-white/90 hover:bg-white text-primary border-0 shadow-md" />
+                          </>
+                        )}
+                      </Carousel>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

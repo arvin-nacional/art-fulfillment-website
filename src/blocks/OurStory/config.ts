@@ -69,7 +69,8 @@ export const OurStory: Block = {
       type: 'richText',
       label: 'Founder Note',
       admin: {
-        description: 'Text displayed below the founder cards, connecting to the closing section.',
+        description:
+          'Text displayed on the left side, below the founder cards, alongside the image carousel.',
       },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
@@ -78,6 +79,29 @@ export const OurStory: Block = {
           InlineToolbarFeature(),
         ],
       }),
+    },
+    {
+      name: 'founderNoteCarousel',
+      type: 'array',
+      label: 'Founder Note Carousel Images',
+      admin: {
+        description: 'Images displayed in the carousel on the right side of the founder note.',
+      },
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'caption',
+          type: 'text',
+          admin: {
+            description: 'Optional caption shown below the image.',
+          },
+        },
+      ],
     },
     {
       name: 'closingImage',
