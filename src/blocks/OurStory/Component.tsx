@@ -125,7 +125,7 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
                   {/* Founder note — left */}
                   {founderNote && (
                     <div
-                      className={`text-base md:text-lg font-semibold text-foreground leading-relaxed ${
+                      className={`text-base md:text-2xl font-semibold text-foreground leading-relaxed ${
                         !hasCarousel ? 'max-w-3xl mx-auto text-center' : ''
                       }`}
                       style={{ animation: 'storyFadeUp 0.7s 0.1s ease-out both' }}
@@ -143,7 +143,7 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
                       <Carousel opts={{ align: 'start', loop: true }} className="w-full">
                         <CarouselContent>
                           {carouselItems.map((slide, index) => (
-                            <CarouselItem key={slide.id || index}>
+                            <CarouselItem key={`${slide.id ?? 'slide'}-${index}`}>
                               <figure className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-xl">
                                 {typeof slide.image === 'object' && slide.image && (
                                   <Media resource={slide.image} fill imgClassName="object-cover" />
