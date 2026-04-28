@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { FoundersGrid } from './FounderCard.client'
 
 export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
   heading,
@@ -81,39 +82,7 @@ export const OurStoryBlock: React.FC<OurStoryBlockProps> = ({
       {founders && founders.length > 0 && (
         <div id="founders" className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-8">
-              {founders.map((founder, index) => (
-                <div
-                  key={founder.id || index}
-                  className="relative bg-card border border-border rounded-2xl p-8 md:p-10 hover:shadow-lg transition-shadow overflow-hidden"
-                  style={{ animation: `storyFadeUp 0.7s ${index * 0.12}s ease-out both` }}
-                >
-                  {/* Watermark letter */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute -top-6 -right-2 text-[10rem] md:text-[14rem] font-black leading-none select-none pointer-events-none text-primary/6"
-                  >
-                    {founder.letter}
-                  </span>
-
-                  <div className="flex flex-col md:flex-row md:items-start md:gap-8 relative z-10">
-                    {/* Letter badge */}
-                    <div className="shrink-0 mb-6 md:mb-0">
-                      <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center">
-                        <span className="text-2xl font-black text-white leading-none">
-                          {founder.letter}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Bio */}
-                    <div className="text-muted-foreground text-sm md:text-base leading-relaxed flex-1">
-                      <RichText data={founder.bio} enableGutter={false} enableProse={false} />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <FoundersGrid founders={founders} />
             {/* ── Founder note + Carousel ── */}
             {(founderNote || hasCarousel) && (
               <div className="pt-14 md:pt-20">
