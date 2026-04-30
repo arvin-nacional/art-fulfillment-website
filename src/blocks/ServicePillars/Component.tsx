@@ -121,13 +121,15 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                 {/* Card */}
                 <div className="relative h-full bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
                   {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6 group-hover:bg-secondary/30 transition-colors overflow-hidden">
+                  <div
+                    className={`w-14 h-14 rounded-xl ${colors.iconBg} flex items-center justify-center mb-6 transition-colors overflow-hidden`}
+                  >
                     {pillar.iconImage && typeof pillar.iconImage === 'object' ? (
                       <div className="relative w-full h-full">
                         <Media resource={pillar.iconImage} fill imgClassName="object-contain p-3" />
                       </div>
                     ) : (
-                      <IconComponent className="w-7 h-7 text-secondary" />
+                      <IconComponent className={`w-7 h-7 ${colors.iconText}`} />
                     )}
                   </div>
 
@@ -158,8 +160,10 @@ export const ServicePillarsBlock: React.FC<ServicePillarsBlockProps> = ({
                           key={item.id || featureIndex}
                           className="flex items-start gap-3 text-foreground"
                         >
-                          <span className="shrink-0 w-5 h-5 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5">
-                            <Check className="w-3 h-3 text-secondary" />
+                          <span
+                            className={`shrink-0 w-5 h-5 rounded-full ${colors.checkBg} flex items-center justify-center mt-0.5`}
+                          >
+                            <Check className={`w-3 h-3 ${colors.checkIcon}`} />
                           </span>
                           <span className="text-sm leading-relaxed">
                             {parseFeatureText(item.feature || '')}
