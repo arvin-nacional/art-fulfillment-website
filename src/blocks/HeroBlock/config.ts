@@ -33,14 +33,40 @@ export const HeroBlock: Block = {
         {
           name: 'value',
           type: 'text',
-          required: true,
           label: 'Value',
+          admin: {
+            description:
+              'Optional — leave empty if showing logos instead (e.g. Marketplace Integration)',
+          },
         },
         {
           name: 'label',
           type: 'text',
-          required: true,
           label: 'Label',
+        },
+        {
+          name: 'logos',
+          type: 'array',
+          label: 'Logos',
+          admin: {
+            description:
+              'Optional — add marketplace/partner logos (e.g. Lazada, Shopee, Shopify, TikTok). Shown in place of the value when provided.',
+            initCollapsed: true,
+          },
+          fields: [
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+              label: 'Logo',
+            },
+            {
+              name: 'alt',
+              type: 'text',
+              label: 'Alt Text',
+            },
+          ],
         },
       ],
       admin: {

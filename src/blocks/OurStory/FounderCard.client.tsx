@@ -77,15 +77,6 @@ export const FoundersGrid: React.FC<FoundersGridProps> = ({ founders }) => {
               </span>
 
               <div className="flex flex-col gap-6 relative z-10">
-                {/* Letter badge */}
-                <div className="shrink-0">
-                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center">
-                    <span className="text-2xl font-black text-white leading-none">
-                      {founder.letter}
-                    </span>
-                  </div>
-                </div>
-
                 {/* Bio */}
                 <div>
                   <div className="relative">

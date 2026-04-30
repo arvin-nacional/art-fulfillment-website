@@ -1084,8 +1084,21 @@ export interface HeroBlock {
     | null;
   stats?:
     | {
-        value: string;
-        label: string;
+        /**
+         * Optional — leave empty if showing logos instead (e.g. Marketplace Integration)
+         */
+        value?: string | null;
+        label?: string | null;
+        /**
+         * Optional — add marketplace/partner logos (e.g. Lazada, Shopee, Shopify, TikTok). Shown in place of the value when provided.
+         */
+        logos?:
+          | {
+              image: string | Media;
+              alt?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2162,6 +2175,13 @@ export interface HeroBlockSelect<T extends boolean = true> {
     | {
         value?: T;
         label?: T;
+        logos?:
+          | T
+          | {
+              image?: T;
+              alt?: T;
+              id?: T;
+            };
         id?: T;
       };
   backgroundImage?: T;

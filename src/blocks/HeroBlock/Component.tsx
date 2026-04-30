@@ -100,18 +100,47 @@ export const HeroBlockComponent: React.FC<HeroBlockProps> = ({
               <div className="relative bg-card/20  rounded-2xl p-8">
                 {Array.isArray(stats) && stats.length > 0 && (
                   <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
-                    {stats.map((stat, i) => (
-                      <div
-                        key={i}
-                        className="bg-linear-to-br from-background to-muted/80 rounded-lg p-4 text-center flex flex-col items-center justify-center hero-fade-up"
-                        style={{ animationDelay: `${0.6 + i * 0.1}s` }}
-                      >
-                        <p className="text-2xl font-bold text-primary max-sm:text-xl">
-                          {stat.value}
-                        </p>
-                        <p className="text-xs text-muted-foreground">{stat.label}</p>
-                      </div>
-                    ))}
+                    {stats.map((stat, i) => {
+                      const hasLogos = Array.isArray(stat.logos) && stat.logos.length > 0
+                      return (
+                        <div
+                          key={i}
+                          className="bg-linear-to-br from-background to-muted/80 rounded-lg p-4 text-center flex flex-col items-center justify-center gap-2 hero-fade-up"
+                          style={{ animationDelay: `${0.6 + i * 0.1}s` }}
+                        >
+                          {stat.value && (
+                            <p className="text-2xl font-bold text-primary max-sm:text-xl">
+                              {stat.value}
+                            </p>
+                          )}
+                          {hasLogos ? (
+                            <div className="flex flex-wrap items-center justify-center gap-2">
+                              {stat.logos!.map((logo, li) => {
+                                const img = logo.image
+                                if (!img || typeof img !== 'object') return null
+                                return (
+                                  <div
+                                    key={logo.id || li}
+                                    className="relative w-6 h-6 sm:w-6 sm:h-6 flex items-center justify-center"
+                                  >
+                                    <Media
+                                      resource={img}
+                                      fill
+                                      imgClassName="object-contain"
+                                      alt={logo.alt || img.alt || ''}
+                                    />
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          ) : (
+                            stat.label && (
+                              <p className="text-xs text-muted-foreground">{stat.label}</p>
+                            )
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 )}
               </div>
