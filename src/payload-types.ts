@@ -1116,11 +1116,27 @@ export interface HeroBlock {
  */
 export interface GoogleMapBlock {
   /**
-   * Go to Google Maps → Share → Embed a map → Copy the src URL from the iframe code
+   * Add one or more locations. Multiple locations are displayed side by side on desktop.
    */
-  embedUrl: string;
+  locations?:
+    | {
+        /**
+         * Optional — shown above the map (e.g. "Head Office")
+         */
+        title?: string | null;
+        /**
+         * Go to Google Maps → Share → Embed a map → Copy the src URL from the iframe code
+         */
+        embedUrl: string;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Height of the map in pixels
+   * Deprecated — use the Locations field above instead.
+   */
+  embedUrl?: string | null;
+  /**
+   * Height of each map in pixels
    */
   height?: number | null;
   fullWidth?: boolean | null;
@@ -2193,6 +2209,13 @@ export interface HeroBlockSelect<T extends boolean = true> {
  * via the `definition` "GoogleMapBlock_select".
  */
 export interface GoogleMapBlockSelect<T extends boolean = true> {
+  locations?:
+    | T
+    | {
+        title?: T;
+        embedUrl?: T;
+        id?: T;
+      };
   embedUrl?: T;
   height?: T;
   fullWidth?: T;
